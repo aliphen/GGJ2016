@@ -46,14 +46,9 @@ function launchGame()
     textBar.x = textBar.y = 10;
     stage.addChild(textBar);
 
-    var testShape = new createjs.Shape();
-    testShape.graphics.beginFill("#000").drawRect(950, 590, 200, 70);
-    testShape.on("mouseover", function() { textBar.text = "A black rectangle"; });
-    testShape.on("mouseout", function() { textBar.text = "Your apartment"; });
-    testShape.on("click", function() { textBar.text = "Action !"; });
-    testShape.cursor = "pointer";
-    stage.addChild(testShape);
-	//do stuff
+    var bg = new MouseZone(0, 0, 1200, 600, function(){textBar.text = "Your apartment"});
+    var test = new MouseZone(950, 590, 200, 70, function(){textBar.text = "A clickable rectangle"}, function(){textBar.text = "Action !"});
+    var testsq = new MouseZone(50, 50, 150, 150, function(){textBar.text = "A square"}, function(){textBar.text = "Action !"});
 
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
