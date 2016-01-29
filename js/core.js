@@ -8,8 +8,7 @@ var preloadTotal = 0;
 var stage;
 
 // Sound assets
-var soundtrackLayer1 = "soundtrackLayer1"
-var soundtrackLayer2 = "soundtrackLayer2"
+var soundtrackLayers = [];
 // Sound assets end
 
 function startGame()
@@ -30,18 +29,15 @@ function preloadAssets()
 	//imgPlayer.onload = preloadUpdate;
 	//imgPlayer.src = "media/player.png";
 
-	//createjs.Sound.addEventListener("fileload", preloadUpdate);
-	//createjs.Sound.registerSound("media/receive.wav", "jump", 4);
-
-	createjs.Sound.addEventListener("fileload", playMusic);
-	createjs.Sound.registerSound("media/music/layer1.mp3", soundtrackLayer1);
-    createjs.Sound.registerSound("media/music/layer2.mp3", soundtrackLayer2);
+    createjs.Sound.addEventListener("fileload", playMusicLayers);
+    createjs.Sound.registerSound("media/music/layer1.mp3", "soundtrackLayer1");
+    createjs.Sound.registerSound("media/music/layer2.mp3", "soundtrackLayer2");
 }
-function playMusic(event)
+function playMusicLayers(event)
 {
     var instance = createjs.Sound.play(event.id, {loop:-1});
-    instance.on("complete", this.handleComplete, this);
     instance.volume = 0;
+    soundtrackLayers.push(instance);
 }
 
 function preloadUpdate()
@@ -88,5 +84,6 @@ function code(e)
 
 function update(event)
 {
+    //soundtrackLayers[0].volume += 0.01; fade in
 	stage.update();
 }
