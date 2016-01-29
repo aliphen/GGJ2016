@@ -3,7 +3,7 @@ displayDebug = false;
 var isKeyPressed = [];
 
 var preloadCount = 0;
-var preloadTotal = 5;
+var preloadTotal = 0;
 
 var stage;
 
@@ -21,6 +21,7 @@ function startGame()
 
 function preloadAssets()
 {
+    launchGame(); //todo remove when actual stuff does preload
 	//imgPlayer.onload = preloadUpdate;
 	//imgPlayer.src = "media/player.png";
 
@@ -37,8 +38,21 @@ function preloadUpdate()
 
 function launchGame()
 {
+    stage.enableMouseOver();
+
 	stage.removeChildAt(0); //loading text
 
+    var textBar = new createjs.Text("Your apartment", "14px Arial");
+    textBar.x = textBar.y = 10;
+    stage.addChild(textBar);
+
+    var testShape = new createjs.Shape();
+    testShape.graphics.beginFill("#000").drawRect(950, 590, 200, 70);
+    testShape.on("mouseover", function() { textBar.text = "A black rectangle"; });
+    testShape.on("mouseout", function() { textBar.text = "Your apartment"; });
+    testShape.on("click", function() { textBar.text = "Action !"; });
+    testShape.cursor = "pointer";
+    stage.addChild(testShape);
 	//do stuff
 
 	createjs.Ticker.setFPS(30);
