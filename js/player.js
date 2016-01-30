@@ -22,7 +22,7 @@ function Player(img, path) {
     });
 
     this.sprite = new createjs.Sprite(spSheet, "walk");
-    this.sprite.y = 61;
+    this.sprite.y = 51;
     this.sprite.x = 400;
 
     // insert before fading screen
