@@ -77,7 +77,7 @@ function launchGame()
     var timer6s = new VisualTimer(6, 400, 100);
 
     var player = new Player(imgPlayer, [800, 50, 1000]);
-    eltsToUpdate.push(new TextBox(player, "HelloWorld !"));
+    var tb = new TextBox(player, "HelloWorld !");
 
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
