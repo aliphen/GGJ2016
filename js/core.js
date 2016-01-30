@@ -53,24 +53,15 @@ function preloadUpdate()
 function launchGame()
 {
     stage.enableMouseOver();
-
 	stage.removeChildAt(0); //loading text
 
-    var textBar = new createjs.Text("Your apartment", "14px Arial");
-    textBar.x = textBar.y = 10;
-    stage.addChild(textBar);
-
     var test = new MouseZone(950, 590, 200, 70,
-        function(){textBar.text = "A clickable rectangle"},
         function(){
-            textBar.text = "Action !";
-            //player.destX = test.xTarget;
+            //todo : action when clicked
         });
     var testsq = new MouseZone(50, 50, 150, 150,
-        function(){textBar.text = "A square"},
         function(){
-            textBar.text = "Action !";
-            //player.destX = testsq.xTarget;
+            //todo : action when clicked
         });
 
     var timer3s = new VisualTimer(3, 300, 100);
