@@ -11,22 +11,22 @@ function MouseZone(x, y, w, h)
     var clickTimeInSec = 1;
     var activeTimeInSec = 3;
 
-    var testShape = new createjs.Shape();
-    testShape.graphics.beginFill("rgba(255,0,0,0.5)").drawRect(x, y, w, h);
-    testShape.cursor = "pointer";
+    var underlyingShape = new createjs.Shape();
+    underlyingShape.graphics.beginFill("rgba(255,0,0,0.5)").drawRect(x, y, w, h);
+    underlyingShape.cursor = "pointer";
 
-    stage.addChild(testShape);
+    stage.addChild(underlyingShape);
     eltsToUpdate.push(this);
 
     var self = this; //for callbacks
-    testShape.on("mousedown", function() {
+    underlyingShape.on("mousedown", function() {
         if(self.state == "inactive") {
             timer = new VisualTimer(clickTimeInSec, x + w / 2, y + h / 2, incrementalTimer);
             self.state = "clicked";
         }
     });
 
-    testShape.on("pressup", function() {
+    underlyingShape.on("pressup", function() {
         if(self.state == "clicked") {
             timer.remove();
             self.state = "inactive";
