@@ -7,7 +7,6 @@ var preloadTotal = 1;
 
 var stage;
 var eltsToUpdate = [];
-var textBox;
 
 // Images assets
 var imgPlayer;
@@ -83,7 +82,7 @@ function launchGame()
     var timer6s = new VisualTimer(6, 400, 100);
 
     var player = new Player(imgPlayer);
-    textBox = new TextBox(player, "HelloWorld !");
+    eltsToUpdate.push(new TextBox(player, "HelloWorld !"));
 
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
@@ -114,9 +113,6 @@ function update(event)
 	stage.update(event);
     for(var i = 0; i < eltsToUpdate.length; i++)
         eltsToUpdate[i].update(event);
-
-    textBox.update(event, player);
-
 }
 
 fadeMusic = function(layerId, fadeIn) {
