@@ -1,5 +1,6 @@
 //sprite should have anims called still, click, active and decay
-function MouseZone(sprite, yeux){
+function MouseZone(sprite, yeux, name){
+    this.name = name;
     var clickTimeInSec = 2; //Activation
     var activeTimeInSec = 2; // 
 
@@ -29,7 +30,7 @@ function MouseZone(sprite, yeux){
     sprite.cursor = "pointer";
     eltsToUpdate.push(this);
 
-    var self = this; //for callbacks
+    var self = this; //for callbacks and for my people
     sprite.on("mousedown", function() {
         if(self.state == "inactive") {
             timer = new VisualTimer(clickTimeInSec, x + w/2, y + h/2, incrementalTimer);

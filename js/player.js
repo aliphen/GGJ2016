@@ -71,6 +71,7 @@ function Player(img, path) {
                 if(obj.state == "active" && detectionMin < obj.xEnd && detectionMax > obj.xBegin)
                 {
                     obj.detect();
+                    texts.displayTextForObject(obj.name, this);
                     this.sprite.gotoAndPlay("surprise");
                     this.stopFor(1000, obj.xPos);
                     break;

@@ -25,6 +25,8 @@ var soundtrackLayer2 = "soundtrackLayer2";
 var musicHandler;
 // Sound assets end
 
+var texts;
+
 function startGame()
 {
 	stage = new createjs.Stage(document.getElementById("gameCanvas"));
@@ -96,24 +98,25 @@ function launchGame()
         }
     });
 
-    createClickable(510, 149, spSheetFlower, spSheetYeux); //pot
-    createClickable(50, 20, spSheetFlower, spSheetYeux); //frame
-    createClickable(200, 50, spSheetFlower, spSheetYeux); //maitre window
-    createClickable(425, 149, spSheetFlower, spSheetYeux); //aqua
-    createClickable(1000, 120, spSheetFlower, spSheetYeux); //phone
+    createClickable(510, 149, spSheetFlower, spSheetYeux, "flower"); //pot, dites non à la drogue
+    createClickable(50, 20, spSheetFlower, spSheetYeux, "photo"); //frame 1080p 60fps
+    createClickable(200, 50, spSheetFlower, spSheetYeux, "window"); //maitre window
+    createClickable(425, 149, spSheetFlower, spSheetYeux, "aquarium"); //aqua. Hi Ken !
+    createClickable(1000, 120, spSheetFlower, spSheetYeux, "phone"); //phone, ouh ouh ouh, banana phone
 
     player = new Player(imgPlayer, [900, 60, 1250]);
     player.start = true;
-    var tb = new TextBox(player, "HelloWorld !");
 
     musicHandler = new MusicHandler();
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
+
+    texts = new Texts();
 
     createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
 }
 
-function createClickable(x, y, spSheetObj, spSheetYeux)
+function createClickable(x, y, spSheetObj, spSheetYeux, name)
 {
     var spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
     spriteYeux.regX = 50;
@@ -121,7 +124,7 @@ function createClickable(x, y, spSheetObj, spSheetYeux)
     var sprite = new createjs.Sprite(spSheetObj, "still");
     sprite.x = x;
     sprite.y = y;
-    interactiveObjects.push(new MouseZone(sprite, spriteYeux));
+    interactiveObjects.push(new MouseZone(sprite, spriteYeux, name));
 }
 
 function update(event)
