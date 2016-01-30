@@ -120,6 +120,7 @@ function Player(img, path) {
     this.reset = function() {
         this.start = false;
         ipath = 0;
+        overridenDest = undefined;
         this.sprite.x = 400;
     };
 
