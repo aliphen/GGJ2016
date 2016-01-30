@@ -28,6 +28,15 @@ texts["chitchat"][4] = "I could keep living like that forever.";
 
 // TODO : implement | as a line separator.
 
+var alreadyDisplayed = [];
+alreadyDisplayed["window"] = -1;
+alreadyDisplayed["flower"] = -1;
+alreadyDisplayed["aquarium"] = -1;
+alreadyDisplayed["phone"] = -1;
+alreadyDisplayed["photo"] = -1;
+alreadyDisplayed["chitchat"] = -1;
+
+
 
 
 
