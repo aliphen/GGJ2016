@@ -1,7 +1,5 @@
 displayDebug = false;
 
-var isKeyPressed = [];
-
 var preloadCount = 0;
 var preloadTotal = 1;
 
@@ -83,23 +81,6 @@ function launchGame()
 
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
-
-	//manage keyboard state
-	document.onkeydown = function(e){
-		var key = code(e);
-		isKeyPressed[key] = true;
-//		alert(key);
-	};
-	document.onkeyup = function(e){
-		var key = code(e);
-		isKeyPressed[key] = false;
-	};
-}
-
-function code(e)
-{
-	e = e || window.event;
-	return(e.keyCode || e.which);
 }
 
 function update(event)
