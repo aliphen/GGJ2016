@@ -1,8 +1,10 @@
+var rectangleToCoverScene = null;
+
 function Transition() {
     gameStateTransition = true;
     var timeInPauseCounter = 30;
     var transitionState = TransitionStates.FadingToBlack;
-    var rectangleToCoverScene = new createjs.Shape();
+    rectangleToCoverScene = new createjs.Shape();
     rectangleToCoverScene.graphics.beginFill("#000000").drawRect(0, 0, 1200, 700);
     rectangleToCoverScene.visible = true;
     rectangleToCoverScene.alpha = 0;

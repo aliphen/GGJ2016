@@ -22,7 +22,14 @@ function Player(img, path) {
     this.sprite = new createjs.Sprite(spSheet, "walk");
     this.sprite.y = 61;
     this.sprite.x = 400;
-    stage.addChild(this.sprite);
+
+    // insert before fading screen
+    if (rectangleToCoverScene == null)
+        stage.addChild(this.sprite);
+    else {
+        var index = stage.getChildIndex(rectangleToCoverScene);
+        stage.addChildAt(this.sprite, index - 1);
+    }
     eltsToUpdate.push(this);
 
     this.update = function (event) {
