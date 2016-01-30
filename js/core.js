@@ -108,6 +108,38 @@ function launchGame()
     spriteFlower.y = 149;
     interactiveObjects.push(new MouseZone(spriteFlower, spriteYeux));
 
+    spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
+    spriteYeux.regX = 50;
+    spriteYeux.regY = 100;
+    var spriteFrame = new createjs.Sprite(spSheetFlower, "still");
+    spriteFrame.x = 50;
+    spriteFrame.y = 20;
+    interactiveObjects.push(new MouseZone(spriteFrame, spriteYeux));
+
+    spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
+    spriteYeux.regX = 50;
+    spriteYeux.regY = 100;
+    var spriteWindow = new createjs.Sprite(spSheetFlower, "still");
+    spriteWindow.x = 200;
+    spriteWindow.y = 50;
+    interactiveObjects.push(new MouseZone(spriteWindow, spriteYeux));
+
+    spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
+    spriteYeux.regX = 50;
+    spriteYeux.regY = 100;
+    var spriteAqua = new createjs.Sprite(spSheetFlower, "still");
+    spriteAqua.x = 425;
+    spriteAqua.y = 149;
+    interactiveObjects.push(new MouseZone(spriteAqua, spriteYeux));
+
+    spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
+    spriteYeux.regX = 50;
+    spriteYeux.regY = 100;
+    var spritePhone = new createjs.Sprite(spSheetFlower, "still");
+    spritePhone.x = 1000;
+    spritePhone.y = 120;
+    interactiveObjects.push(new MouseZone(spritePhone, spriteYeux));
+
     player = new Player(imgPlayer, [900, 60, 1250]);
     player.start = true;
     var tb = new TextBox(player, "HelloWorld !");
