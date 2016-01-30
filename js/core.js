@@ -30,7 +30,7 @@ function preloadAssets()
 {
     imgPlayer = new Image();
 	imgPlayer.onload = preloadUpdate;
-	imgPlayer.src = "media/player.png";
+	imgPlayer.src = "media/Personnage.png";
 
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/layer1.mp3", "soundtrackLayer1");

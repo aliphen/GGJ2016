@@ -5,18 +5,18 @@ function Player(img, path) {
 
     var spSheet = new createjs.SpriteSheet({
         images: [img],
-        frames: {height: 200, width: 100, regX: 50},
+        frames: {height: 245, width: 62, regX: 62/2},
         animations: {
-            still: [0, 0]
+            still: [0, 0],
+            walk: [1, 6, "walk", 0.4]
         }
     });
 
-    this.sprite = new createjs.Sprite(spSheet);
+    this.sprite = new createjs.Sprite(spSheet, "walk");
     this.sprite.y = 200;
     this.sprite.x = 400;
     stage.addChild(this.sprite);
     eltsToUpdate.push(this);
-    //use gotoAndPlay to change anim
 
     this.update = function (event) {
         var deltaT = event.delta / 30; //usually approximately 1
@@ -24,7 +24,7 @@ function Player(img, path) {
         var destX = path[ipath];
         if (Math.abs(destX - this.sprite.x) > 0.01) {
             //look left or right depending on walking direction
-            if(destX - this.sprite.x > 0)
+            if(destX - this.sprite.x < 0)
                 this.sprite.scaleX = -1;
             else
                 this.sprite.scaleX = 1;
@@ -34,7 +34,8 @@ function Player(img, path) {
             this.sprite.x += Math.min(Math.max(destX - this.sprite.x, -maxMove), maxMove);
         }
         else{ //destination reached
-            //pause for a bit, play an anim ?
+
+            //this.sprite.gotoAndPlay("still");
             ipath++;
         }
     }
