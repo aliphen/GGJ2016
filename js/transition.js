@@ -11,9 +11,8 @@ function Transition() {
     rectangleToCoverScene.alpha = 0;
     stage.addChild(rectangleToCoverScene);
 
-    // TODO fix fadeout
-    for (var l in soundtrackLayers)
-        fadeMusic(l, false);
+    musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingOut);
+    musicHandler.fadeMusic(soundtrackLayer2, MusicStates.FadingOut);
 
     this.update = function(event) {
         switch (transitionState) {
@@ -30,7 +29,7 @@ function Transition() {
                     timeInPauseCounter--;
                 else {
                     transitionState = TransitionStates.FadingToGame;
-                    fadeMusic(soundtrackLayers[0], true);
+                    musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
                 }
                 break;
             case (TransitionStates.FadingToGame):

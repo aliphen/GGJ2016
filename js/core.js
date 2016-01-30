@@ -20,6 +20,9 @@ var imgYeux;
 
 // Sound assets
 var soundtrackLayers = [];
+var soundtrackLayer1 = "soundtrackLayer1";
+var soundtrackLayer2 = "soundtrackLayer2";
+var musicHandler;
 // Sound assets end
 
 function startGame()
@@ -57,14 +60,14 @@ function preloadAssets()
     imgYeux.src = "media/lesyeux.png";
 
     createjs.Sound.addEventListener("fileload", playMusicLayers);
-    createjs.Sound.registerSound("media/music/layer1.mp3", "soundtrackLayer1");
-    createjs.Sound.registerSound("media/music/layer2.mp3", "soundtrackLayer2");
+    createjs.Sound.registerSound("media/music/layer1.mp3", soundtrackLayer1);
+    createjs.Sound.registerSound("media/music/layer2.mp3", soundtrackLayer2);
 }
 function playMusicLayers(event)
 {
     var instance = createjs.Sound.play(event.id, {loop:-1});
     instance.volume = 0;
-    soundtrackLayers.push(instance);
+    soundtrackLayers[event.id] = instance;
 }
 
 function preloadUpdate()
@@ -109,6 +112,9 @@ function launchGame()
     player.start = true;
     var tb = new TextBox(player, "HelloWorld !");
 
+    musicHandler = new MusicHandler();
+    musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
+
     createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
 }
@@ -128,18 +134,3 @@ function update(event)
         transition = null;
     }
 }
-
-fadeMusic = function(layer, fadeIn) {
-    if (!this.fadeDone) {
-        if (fadeIn == true) {
-            layer.volume += 0.01;
-            if (layer.volume >= 1)
-                this.fadeDone = true;
-        }
-        else {
-            layer.volume -= 0.01;
-            if (layer.volume <= 1)
-                this.fadeDone = true;
-        }
-    }
-};
