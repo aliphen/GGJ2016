@@ -1,7 +1,7 @@
 displayDebug = false;
 
 var preloadCount = 0;
-var preloadTotal = 4;
+var preloadTotal = 5;
 
 var stage;
 var player;
@@ -15,6 +15,7 @@ var imgPlayer;
 var imgBg;
 var imgFlower;
 var imgDebug;
+var imgYeux;
 // Images assets end
 
 // Sound assets
@@ -51,6 +52,10 @@ function preloadAssets()
     imgDebug.onload = preloadUpdate;
     imgDebug.src = "media/debug.png";
 
+    imgYeux = new Image();
+    imgYeux.onload = preloadUpdate;
+    imgYeux.src = "media/lesyeux.png";
+
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/layer1.mp3", "soundtrackLayer1");
     createjs.Sound.registerSound("media/music/layer2.mp3", "soundtrackLayer2");
@@ -77,6 +82,14 @@ function launchGame()
     var objBg = new createjs.Bitmap(imgBg);
     stage.addChild(objBg);
 
+    var spSheetYeux = new createjs.SpriteSheet({
+        images: [imgYeux],
+        frames: {height: 100, width: 100},
+        animations: {closed: 0, open: 1}
+    });
+    var spriteYeux = new createjs.Sprite(spSheetYeux, "closed");
+    spriteYeux.regX = 50;
+    spriteYeux.regY = 100;
     var spSheetFlower = new createjs.SpriteSheet({
         images: [imgFlower],
         frames: {height: 56, width: 38},
@@ -90,7 +103,7 @@ function launchGame()
     var spriteFlower = new createjs.Sprite(spSheetFlower, "still");
     spriteFlower.x = 510;
     spriteFlower.y = 149;
-    interactiveObjects.push(new MouseZone(spriteFlower));
+    interactiveObjects.push(new MouseZone(spriteFlower, spriteYeux));
 
     player = new Player(imgPlayer, [500, 60, 1000]);
     player.start = true;
