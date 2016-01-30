@@ -1,4 +1,4 @@
-function MouseZone(x, y, w, h, onClick)
+function MouseZone(x, y, w, h)
 {
     var state = "inactive";
 
@@ -19,7 +19,6 @@ function MouseZone(x, y, w, h, onClick)
         testShape.cursor = "pointer";
         timer = new VisualTimer(clickTimeInSec, x + w/2, y + h/2, incrementalTimer);
         state = "clicked";
-        onClick();
     });
 
     testShape.on("pressup", function() {

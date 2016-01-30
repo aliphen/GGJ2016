@@ -58,14 +58,8 @@ function launchGame()
     stage.enableMouseOver();
 	stage.removeChildAt(0); //loading text
 
-    var test = new MouseZone(950, 500, 200, 70,
-        function(){
-            //todo : action when clicked
-        });
-    var testsq = new MouseZone(50, 50, 150, 150,
-        function(){
-            //todo : action when clicked
-        });
+    var test = new MouseZone(950, 500, 200, 70);
+    var testsq = new MouseZone(50, 50, 150, 150);
 
     var player = new Player(imgPlayer, [800, 50, 1000]);
     var tb = new TextBox(player, "HelloWorld !");
