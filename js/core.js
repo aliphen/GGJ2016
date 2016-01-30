@@ -7,8 +7,11 @@ var preloadTotal = 1;
 
 var stage;
 var eltsToUpdate = [];
+var textBox;
 
+// Images assets
 var imgPlayer;
+// Images assets end
 
 // Sound assets
 var soundtrackLayers = [];
@@ -80,6 +83,7 @@ function launchGame()
     var timer6s = new VisualTimer(6, 400, 100);
 
     var player = new Player(imgPlayer);
+    textBox = new TextBox(player, "HelloWorld !");
 
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
@@ -105,25 +109,24 @@ function code(e)
 function update(event)
 {
     //  Use this to fade tracks in and out
-    //if(true)
     //    fadeMusic(0, true);
 
 	stage.update(event);
     for(var i = 0; i < eltsToUpdate.length; i++)
         eltsToUpdate[i].update(event);
+
+    textBox.update(event, player);
+
 }
 
-fadeMusic = function(layerId, fadeIn)
-{
-    if(!this.fadeDone)
-    {
+fadeMusic = function(layerId, fadeIn) {
+    if (!this.fadeDone) {
         if (fadeIn == true) {
             soundtrackLayers[layerId].volume += 0.01;
             if (soundtrackLayers[layerId] >= 1)
                 this.fadeDone = true;
         }
-        else
-        {
+        else {
             soundtrackLayers[layerId].volume -= 0.01;
             if (soundtrackLayers[layerId] <= 1)
                 this.fadeDone = true;
