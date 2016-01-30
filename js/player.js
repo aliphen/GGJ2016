@@ -1,7 +1,7 @@
 function Player(img, path) {
-    var visionRange = 50;
+    var visionRange = 50; // FoV
 
-    this.speed = 0.1;
+    this.speed = 0.1; // <
     this.start = false;
 
     var ipath = 0;

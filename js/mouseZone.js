@@ -1,7 +1,7 @@
 //sprite should have anims called still, click, active and decay
 function MouseZone(sprite){
-    var clickTimeInSec = 1;
-    var activeTimeInSec = 3;
+    var clickTimeInSec = 2; //Activation
+    var activeTimeInSec = 2; // 
 
     //won't move
     var x = sprite.x;
@@ -46,7 +46,7 @@ function MouseZone(sprite){
             clickedDuration += event.delta/1000;
             if (clickedDuration > clickTimeInSec) {
                 timer.remove();
-                timer = new VisualTimer(3, x + w / 2, y + h / 2, decrementalTimer);
+                timer = new VisualTimer(activeTimeInSec, x + w / 2, y + h / 2, decrementalTimer);
                 this.state = "active";
                 sprite.gotoAndPlay("active");
                 activeDuration = 0;
