@@ -69,6 +69,13 @@ function Player(img, path) {
                     this.sprite.gotoAndPlay("surprise");
                     this.stopFor(1000);
                 }
+                else if(obj.state == "noticed" && Math.abs(this.sprite.x - obj.xPos) < 0.5)
+                {
+                    //interact with object
+                    obj.state = "used"; //do not interact again
+                    this.sprite.gotoAndPlay("inspect");
+                    this.stopFor(1000);
+                }
             }
 
             //move

@@ -11,6 +11,7 @@ function MouseZone(sprite){
 
     this.xBegin = x;
     this.xEnd = x+w;
+    this.xPos = x+w/2;
 
 
     this.state = "inactive";
