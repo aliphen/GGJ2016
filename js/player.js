@@ -1,5 +1,6 @@
 function Player(img, path) {
     this.speed = 0.1;
+    this.pathFinished = false;
 
     var ipath = 0;
 
@@ -22,6 +23,9 @@ function Player(img, path) {
         var deltaT = event.delta;
 
         var destX = path[ipath];
+
+
+
         if (Math.abs(destX - this.sprite.x) > 0.01) {
             //look left or right depending on walking direction
             if(destX - this.sprite.x < 0)
@@ -38,5 +42,7 @@ function Player(img, path) {
             //this.sprite.gotoAndPlay("still");
             ipath++;
         }
+        if (ipath > path.length + 1 && transition == null) // this means we reached the end of the path : trigger transition
+            transition = new Transition();
     }
 }

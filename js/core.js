@@ -61,13 +61,9 @@ function launchGame()
     var test = new MouseZone(950, 500, 200, 70);
     var testsq = new MouseZone(50, 50, 150, 150);
 
-    var player = new Player(imgPlayer, [800, 50, 1000]);
+    var player = new Player(imgPlayer, [500, 400, 600]);
     var tb = new TextBox(player, "HelloWorld !");
 
-    // debug : trigger transition
-    transition = new Transition();
-    // if transition
-    //    gameTransition = true;
     createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
 }
@@ -82,7 +78,7 @@ function update(event)
     for(var i = 0; i < eltsToUpdate.length; i++)
         eltsToUpdate[i].update(event);
 
-    if (gameStateTransition = true)
+    if (gameStateTransition == true)
         transition.update(event);
 }
 
