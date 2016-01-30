@@ -65,6 +65,7 @@ function MouseZone(sprite)
 
     this.detect = function(){
         this.state = "noticed";
+        sprite.cursor = null;
         timer.remove();
     }
 }
