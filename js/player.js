@@ -23,6 +23,12 @@ function Player(img, path) {
 
         var destX = path[ipath];
         if (Math.abs(destX - this.sprite.x) > 0.01) {
+            //look left or right depending on walking direction
+            if(destX - this.sprite.x > 0)
+                this.sprite.scaleX = -1;
+            else
+                this.sprite.scaleX = 1;
+
             //move
             var maxMove = this.speed*deltaT;
             this.sprite.x += Math.min(Math.max(destX - this.sprite.x, -maxMove), maxMove);
