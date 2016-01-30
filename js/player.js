@@ -12,10 +12,12 @@ function Player(img, path) {
 
     var spSheet = new createjs.SpriteSheet({
         images: [img],
-        frames: {height: 245, width: 62, regX: 62/2},
+        frames: {height: 255, width: 135, regX: 135/2},
         animations: {
-            still: [0, 0],
-            walk: [1, 8, "walk", 2.25*this.speed]
+            still: 0,
+            walk: [1, 8, "walk", 2.25*this.speed],
+            surprise: [9, 10, "still", 0.1],
+            inspect: 11
         }
     });
 
@@ -64,6 +66,8 @@ function Player(img, path) {
                 if(obj.state == "active" && detectionMin < obj.xEnd && detectionMax > obj.xBegin)
                 {
                     obj.detect();
+                    this.sprite.gotoAndPlay("surprise");
+                    this.stopFor(1000);
                 }
             }
 
@@ -76,8 +80,20 @@ function Player(img, path) {
             //this.sprite.gotoAndPlay("still");
             ipath++;
         }
-        if (ipath > path.length + 1 && transition == null) // end of the path : trigger transition
+        if (ipath == path.length + 1 && transition == null) // end of the path : trigger transition
             transition = new Transition();
+    }
+
+    var savediPath;
+    var self = this;
+    this.stopFor = function(timeInMs)
+    {
+        savediPath = ipath;
+        ipath = 1000;
+        setTimeout(function(){
+            ipath = savediPath;
+            self.sprite.gotoAndPlay("walk");
+        }, timeInMs)
     }
 
     this.remove = function() {
