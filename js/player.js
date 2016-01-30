@@ -1,7 +1,7 @@
 function Player(img, path) {
     var visionRange = 50; // FoV
 
-    this.speed = 0.1; // <
+    this.speed = 0.1;
     this.start = false;
 
     var ipath = 0;
@@ -83,12 +83,13 @@ function Player(img, path) {
             this.sprite.x += Math.min(Math.max(destX - this.sprite.x, -maxMove), maxMove);
         }
         else{ //destination reached
-
-            //this.sprite.gotoAndPlay("still");
             ipath++;
         }
         if (ipath == path.length + 1 && transition == null) // end of the path : trigger transition
+        {
+            this.sprite.gotoAndPlay("still");
             transition = new Transition();
+        }
     };
 
     var savediPath;
@@ -104,14 +105,18 @@ function Player(img, path) {
     };
 
     this.remove = function() {
+        stage.removeChild(debug);
         stage.removeChild(this.sprite);
     };
 
     this.reset = function() {
-        this.speed = 0.1;
         this.start = false;
         ipath = 0;
-        this.sprite.y = 61;
         this.sprite.x = 400;
     };
+
+    this.startMoving = function() {
+        this.start = true;
+        self.sprite.gotoAndPlay("walk");
+    }
 }

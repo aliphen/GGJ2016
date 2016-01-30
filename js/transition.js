@@ -11,6 +11,7 @@ function Transition() {
     rectangleToCoverScene.alpha = 0;
     stage.addChild(rectangleToCoverScene);
 
+    // TODO fix fadeout
     for (var l in soundtrackLayers)
         fadeMusic(l, false);
 
@@ -51,7 +52,7 @@ function Transition() {
 
     this.startGameAfterTransition = function() {
         gameStateTransition = false;
-        player.start = true;
+        player.startMoving();
     };
 
     this.remove = function() {
