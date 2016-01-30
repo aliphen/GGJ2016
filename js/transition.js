@@ -7,11 +7,13 @@ function Transition() {
     rectangleToCoverScene.visible = true;
     rectangleToCoverScene.alpha = 0;
     stage.addChild(rectangleToCoverScene);
-    console.log("hi !");
+
+    for (var l in soundtrackLayers)
+        fadeMusic(l, false);
 
     this.update = function(event) {
         switch (transitionState) {
-            case (TransitionStates.FadingToBlack): // TODO fadeout music
+            case (TransitionStates.FadingToBlack):
                 if (rectangleToCoverScene.alpha < 1)
                     rectangleToCoverScene.alpha += 0.01;
                 else {
@@ -19,13 +21,15 @@ function Transition() {
                     this.resetRoom();
                 }
                 break;
-            case (TransitionStates.Pause): // TODO play interlude sound
+            case (TransitionStates.Pause):
                 if (timeInPauseCounter > 0)
                     timeInPauseCounter--;
-                else
+                else {
                     transitionState = TransitionStates.FadingToGame;
+                    fadeMusic(soundtrackLayers[0], true);
+                }
                 break;
-            case (TransitionStates.FadingToGame): // TODO fadein music
+            case (TransitionStates.FadingToGame):
                 if (rectangleToCoverScene.alpha > 0)
                     rectangleToCoverScene.alpha -= 0.01;
                 else
@@ -36,6 +40,7 @@ function Transition() {
 
     this.resetRoom = function() {
         // whatever is required during the fade to black to reset the game.
+        // TODO play interlude sound
     };
 }
 

@@ -92,16 +92,16 @@ function update(event)
         transition.update(event);
 }
 
-fadeMusic = function(layerId, fadeIn) {
+fadeMusic = function(layer, fadeIn) {
     if (!this.fadeDone) {
         if (fadeIn == true) {
-            soundtrackLayers[layerId].volume += 0.01;
-            if (soundtrackLayers[layerId] >= 1)
+            layer.volume += 0.01;
+            if (layer.volume >= 1)
                 this.fadeDone = true;
         }
         else {
-            soundtrackLayers[layerId].volume -= 0.01;
-            if (soundtrackLayers[layerId] <= 1)
+            layer.volume -= 0.01;
+            if (layer.volume <= 1)
                 this.fadeDone = true;
         }
     }
