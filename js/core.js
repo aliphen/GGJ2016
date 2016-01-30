@@ -3,9 +3,12 @@ displayDebug = false;
 var isKeyPressed = [];
 
 var preloadCount = 0;
-var preloadTotal = 0;
+var preloadTotal = 1;
 
 var stage;
+var player;
+
+var imgPlayer;
 
 // Sound assets
 var soundtrackLayers = [];
@@ -25,9 +28,9 @@ function startGame()
 
 function preloadAssets()
 {
-    launchGame(); //todo remove when actual stuff does preload
-	//imgPlayer.onload = preloadUpdate;
-	//imgPlayer.src = "media/player.png";
+    imgPlayer = new Image();
+	imgPlayer.onload = preloadUpdate;
+	imgPlayer.src = "media/player.png";
 
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/layer1.mp3", "soundtrackLayer1");
@@ -57,9 +60,23 @@ function launchGame()
     textBar.x = textBar.y = 10;
     stage.addChild(textBar);
 
-    var bg = new MouseZone(0, 0, 1200, 600, function(){textBar.text = "Your apartment"});
-    var test = new MouseZone(950, 590, 200, 70, function(){textBar.text = "A clickable rectangle"}, function(){textBar.text = "Action !"});
-    var testsq = new MouseZone(50, 50, 150, 150, function(){textBar.text = "A square"}, function(){textBar.text = "Action !"});
+    var bg = new MouseZone(0, 0, 1200, 600,
+        function(){textBar.text = "Your apartment"},
+        function(event){player.destX = event.stageX});
+    var test = new MouseZone(950, 590, 200, 70,
+        function(){textBar.text = "A clickable rectangle"},
+        function(){
+            textBar.text = "Action !";
+            player.destX = test.xTarget;
+        });
+    var testsq = new MouseZone(50, 50, 150, 150,
+        function(){textBar.text = "A square"},
+        function(){
+            textBar.text = "Action !";
+            player.destX = testsq.xTarget;
+        });
+
+    player = new Player(imgPlayer);
 
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
@@ -88,7 +105,8 @@ function update(event)
     //if(true)
     //    fadeMusic(0, true);
 
-	stage.update();
+	stage.update(event);
+    player.update(event);
 }
 
 fadeMusic = function(layerId, fadeIn)
