@@ -1,7 +1,7 @@
 displayDebug = false;
 
 var preloadCount = 0;
-var preloadTotal = 3;
+var preloadTotal = 4;
 
 var stage;
 var player;
@@ -15,6 +15,7 @@ var gameStateTransition = false;
 var imgPlayer;
 var imgBg;
 var imgFlower;
+var imgDebug;
 // Images assets end
 
 // Sound assets
@@ -47,6 +48,10 @@ function preloadAssets()
     imgFlower.onload = preloadUpdate;
     imgFlower.src = "media/Fleur-01.png";
 
+    imgDebug = new Image();
+    imgDebug.onload = preloadUpdate;
+    imgDebug.src = "media/debug.png";
+
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/layer1.mp3", "soundtrackLayer1");
     createjs.Sound.registerSound("media/music/layer2.mp3", "soundtrackLayer2");
@@ -72,8 +77,6 @@ function launchGame()
 
     var objBg = new createjs.Bitmap(imgBg);
     stage.addChild(objBg);
-
-    //interactiveObjects.push(new MouseZone(950, 230, 200, 70));
 
     var spSheetFlower = new createjs.SpriteSheet({
         images: [imgFlower],

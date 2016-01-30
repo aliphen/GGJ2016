@@ -1,8 +1,14 @@
 function Player(img, path) {
+    var visionRange = 50;
+
     this.speed = 0.1;
     this.start = false;
 
     var ipath = 0;
+
+    var debug = new createjs.Bitmap(imgDebug);
+    debug.scaleY = 306;
+    stage.addChild(debug);
 
     var spSheet = new createjs.SpriteSheet({
         images: [img],
@@ -32,14 +38,17 @@ function Player(img, path) {
             var detectionMax;
             if(destX - this.sprite.x < 0) {
                 this.sprite.scaleX = -1; //looking left
-                detectionMin = this.sprite.x - 50;
+                detectionMin = this.sprite.x - visionRange;
                 detectionMax = this.sprite.x;
             }
             else {
                 this.sprite.scaleX = 1; //looking right
                 detectionMin = this.sprite.x;
-                detectionMax = this.sprite.x + 50;
+                detectionMax = this.sprite.x + visionRange;
             }
+
+            debug.x = detectionMin;
+            debug.scaleX = detectionMax - detectionMin;
 
             //check detection range
             for(var i = 0; i < interactiveObjects.length; i ++)
