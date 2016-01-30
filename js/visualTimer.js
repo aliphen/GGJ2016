@@ -1,4 +1,4 @@
-function VisualTimer(duration, x, y)
+function VisualTimer(duration, x, y, onComplete)
 {
     var radius = 50;
 
@@ -18,5 +18,9 @@ function VisualTimer(duration, x, y)
         arc = (arc + arcIncrement);
         if(arc < 3*Math.PI/2 + 0.1)
             shape.graphics.beginStroke("blue").arc(x, y, radius, prevarc, arc);
+    }
+
+    this.remove = function() {
+        stage.removeChild(shape);
     }
 }
