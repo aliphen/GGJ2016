@@ -5,6 +5,7 @@ function Player(img, path) {
     this.start = false;
 
     var ipath = 0;
+    var overridenDest = undefined;
 
     var debug = new createjs.Bitmap(imgDebug);
     debug.scaleY = 306;
@@ -39,7 +40,11 @@ function Player(img, path) {
             return;
 
         var deltaT = event.delta;
-        var destX = path[ipath];
+        var destX = overridenDest ? overridenDest : path[ipath];
+
+        //move
+        var maxMove = this.speed*deltaT;
+        this.sprite.x += Math.min(Math.max(destX - this.sprite.x, -maxMove), maxMove);
 
         if (Math.abs(destX - this.sprite.x) > 0.01) {
             //look left or right depending on walking direction
@@ -67,23 +72,26 @@ function Player(img, path) {
                 {
                     obj.detect();
                     this.sprite.gotoAndPlay("surprise");
-                    this.stopFor(1000);
-                }
-                else if(obj.state == "noticed" && Math.abs(this.sprite.x - obj.xPos) < 0.5)
-                {
-                    //interact with object
-                    obj.state = "used"; //do not interact again
-                    this.sprite.gotoAndPlay("inspect");
-                    this.stopFor(1000);
+                    this.stopFor(1000, obj.xPos);
+                    break;
                 }
             }
-
-            //move
-            var maxMove = this.speed*deltaT;
-            this.sprite.x += Math.min(Math.max(destX - this.sprite.x, -maxMove), maxMove);
         }
         else{ //destination reached
-            ipath++;
+            if(overridenDest) {
+                for(i = 0; i < interactiveObjects.length; i ++) {
+                    obj = interactiveObjects[i];
+                    if (obj.state == "noticed" && Math.abs(this.sprite.x - obj.xPos) < 0.5) {
+                        //interact with object
+                        obj.state = "used"; //do not interact again
+                        this.sprite.gotoAndPlay("inspect");
+                        this.stopFor(1000);
+                        break;
+                    }
+                }
+            }
+            else
+                ipath++;
         }
         if (ipath == path.length + 1 && transition == null) // end of the path : trigger transition
         {
@@ -92,14 +100,12 @@ function Player(img, path) {
         }
     };
 
-    var savediPath;
     var self = this;
-    this.stopFor = function(timeInMs)
+    this.stopFor = function(timeInMs, newdest)
     {
-        savediPath = ipath;
-        ipath = 1000;
+        overridenDest = this.sprite.x;
         setTimeout(function(){
-            ipath = savediPath;
+            overridenDest = newdest;
             self.sprite.gotoAndPlay("walk");
         }, timeInMs)
     };
