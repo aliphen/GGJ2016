@@ -13,6 +13,7 @@ function Transition() {
 
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingOut);
     musicHandler.fadeMusic(soundtrackLayer2, MusicStates.FadingOut);
+    musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingOut);
 
     this.update = function(event) {
         switch (transitionState) {
@@ -29,7 +30,7 @@ function Transition() {
                     timeInPauseCounter--;
                 else {
                     transitionState = TransitionStates.FadingToGame;
-                    musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
+                    musicHandler.fadeMusic(soundtrackLayer2, MusicStates.FadingIn);
                 }
                 break;
             case (TransitionStates.FadingToGame):

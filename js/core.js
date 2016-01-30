@@ -25,6 +25,7 @@ var imgAqua;
 var soundtrackLayers = [];
 var soundtrackLayer1 = "soundtrackLayer1";
 var soundtrackLayer2 = "soundtrackLayer2";
+var soundtrackLayer3 = "soundtrackLayer3";
 var musicHandler;
 // Sound assets end
 
@@ -54,8 +55,9 @@ function preloadAssets()
     imgAqua = loadImg("aqua.png");
 
     createjs.Sound.addEventListener("fileload", playMusicLayers);
-    createjs.Sound.registerSound("media/music/layer1.mp3", soundtrackLayer1);
-    createjs.Sound.registerSound("media/music/layer2.mp3", soundtrackLayer2);
+    createjs.Sound.registerSound("media/music/Aloop.mp3", soundtrackLayer1);
+    createjs.Sound.registerSound("media/music/Astrart.mp3", soundtrackLayer2);
+    createjs.Sound.registerSound("media/music/Bstartloop.mp3", soundtrackLayer3);
 }
 
 function loadImg(name)
@@ -144,7 +146,7 @@ function launchGame()
     player.start = true;
 
     musicHandler = new MusicHandler();
-    musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
+    musicHandler.fadeMusic(soundtrackLayer2, MusicStates.FadingIn);
 
     texts = new Texts();
 
