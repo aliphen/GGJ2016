@@ -2,7 +2,11 @@ function TextBox(player, textToDisplay) {
     // Todo deal with edge of screen
     // Todo display character by character
 
-    this.currentTextBox = new createjs.Text(textToDisplay, "20px Segoe", "#ff00ff");
+    var textSpeed = 2;
+    var charCoolDown = textSpeed;
+    var ichar = 1;
+
+    this.currentTextBox = new createjs.Text("", "20px Segoe", "#ff00ff");
     this.currentTextBox.x = player.sprite.x - 50;
     this.currentTextBox.y = player.sprite.y - 50;
     this.currentTextBox.visible = true;
@@ -12,18 +16,21 @@ function TextBox(player, textToDisplay) {
 
     // Called by the main loop to update the textbox
     this.update = function (event) {
-        // Check if we currently have a textBox displayed
-        if (this.currentTextBox == null)
-            return;
-
         if (this.remainingFramesToDisplayTextBox > 0) {
-            this.remainingFramesToDisplayTextBox--;
+            //align on player
             this.currentTextBox.x = player.sprite.x - 50;
             this.currentTextBox.y = player.sprite.y - 50;
+
+            this.remainingFramesToDisplayTextBox--;
+            charCoolDown--;
+            if(charCoolDown <= 0) {
+                this.currentTextBox.text = textToDisplay.substr(0, ichar);
+                ichar++;
+                charCoolDown = textSpeed;
+            }
         }
         else {
-            stage.removeChild(this.currentTextBox);
-            this.currentTextBox = null;
+            this.currentTextBox.text = "";
         }
     }
 }
