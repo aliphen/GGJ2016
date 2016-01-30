@@ -6,6 +6,9 @@ var preloadTotal = 1;
 var stage;
 var eltsToUpdate = [];
 
+var transition;
+var gameStateTransition = false;
+
 // Images assets
 var imgPlayer;
 // Images assets end
@@ -67,9 +70,14 @@ function launchGame()
     var player = new Player(imgPlayer, [800, 50, 1000]);
     var tb = new TextBox(player, "HelloWorld !");
 
-	createjs.Ticker.setFPS(30);
+    // debug : trigger transition
+    transition = new Transition();
+    // if transition
+    //    gameTransition = true;
+    createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
 }
+
 
 function update(event)
 {
@@ -79,6 +87,9 @@ function update(event)
 	stage.update(event);
     for(var i = 0; i < eltsToUpdate.length; i++)
         eltsToUpdate[i].update(event);
+
+    if (gameStateTransition = true)
+        transition.update(event);
 }
 
 fadeMusic = function(layerId, fadeIn) {
@@ -94,4 +105,4 @@ fadeMusic = function(layerId, fadeIn) {
                 this.fadeDone = true;
         }
     }
-}
+};
