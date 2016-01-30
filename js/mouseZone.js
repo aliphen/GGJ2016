@@ -1,20 +1,23 @@
-function MouseZone(x, y, w, h, onClick, onComplete)
+function MouseZone(x, y, w, h, onClick)
 {
+    var state = "inactive";
+
     var timer;
-    var isClicked = false;
     var clickedDuration = 0;
     var timerInSeconds = 1;
 
     this.onClickDown = function() {
         testShape.cursor = "pointer";
-        timer = new VisualTimer(timerInSeconds, x + w/2, y + h/2);
-        isClicked = true;
+        timer = new VisualTimer(timerInSeconds, x + w/2, y + h/2, incrementalTimer);
+        state = "clicked";
         onClick();
     };
 
     this.onMouseUp = function() {
-        timer.remove();
-        isClicked = false;
+        if(state == "clicked") {
+            timer.remove();
+            state = "inactive";
+        }
         clickedDuration = 0;
     };
 
@@ -26,12 +29,17 @@ function MouseZone(x, y, w, h, onClick, onComplete)
     testShape.on("pressup", this.onMouseUp);
 
     stage.addChild(testShape);
+    eltsToUpdate.push(this);
 
 
     this.update = function(event) {
-        if (isClicked)
-            clickedDuration += event.delta;
-        if (clickedDuration > timerInSeconds)
-            onComplete();
+        if (state == "clicked") {
+            clickedDuration += event.delta/1000;
+            if (clickedDuration > timerInSeconds) {
+                timer.remove();
+                timer = new VisualTimer(3, x + w / 2, y + h / 2, decrementalTimer);
+                state = "active"
+            }
+        }
     }
 }
