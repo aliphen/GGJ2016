@@ -84,6 +84,27 @@ function code(e)
 
 function update(event)
 {
-    //soundtrackLayers[0].volume += 0.01; fade in
+    //  Use this to fade tracks in and out
+    //if(true)
+    //    fadeMusic(0, true);
+
 	stage.update();
+}
+
+fadeMusic = function(layerId, fadeIn)
+{
+    if(!this.fadeDone)
+    {
+        if (fadeIn == true) {
+            soundtrackLayers[layerId].volume += 0.01;
+            if (soundtrackLayers[layerId] >= 1)
+                this.fadeDone = true;
+        }
+        else
+        {
+            soundtrackLayers[layerId].volume -= 0.01;
+            if (soundtrackLayers[layerId] <= 1)
+                this.fadeDone = true;
+        }
+    }
 }
