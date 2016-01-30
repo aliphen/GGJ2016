@@ -4,6 +4,7 @@ var preloadCount = 0;
 var preloadTotal = 1;
 
 var stage;
+var player;
 var eltsToUpdate = [];
 
 var transition;
@@ -61,7 +62,8 @@ function launchGame()
     var test = new MouseZone(950, 500, 200, 70);
     var testsq = new MouseZone(50, 50, 150, 150);
 
-    var player = new Player(imgPlayer, [500, 400, 600]);
+    player = new Player(imgPlayer, [500, 400, 600]);
+    player.start = true;
     var tb = new TextBox(player, "HelloWorld !");
 
     createjs.Ticker.setFPS(30);

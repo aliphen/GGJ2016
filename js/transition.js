@@ -32,8 +32,10 @@ function Transition() {
             case (TransitionStates.FadingToGame):
                 if (rectangleToCoverScene.alpha > 0)
                     rectangleToCoverScene.alpha -= 0.01;
-                else
+                else {
                     gameStateTransition = false;
+                    player.start = true;
+                }
                 break;
         }
     };
@@ -41,6 +43,9 @@ function Transition() {
     this.resetRoom = function() {
         // whatever is required during the fade to black to reset the game.
         // TODO play interlude sound
+        player.remove();
+        player = new Player(imgPlayer, [500, 400, 600]); // TODO do not start moving before the end of transition
+
     };
 }
 
