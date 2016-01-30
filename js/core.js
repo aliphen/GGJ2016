@@ -6,6 +6,7 @@ var preloadTotal = 1;
 var stage;
 var player;
 var eltsToUpdate = [];
+var interactiveObjects = [];
 
 var transition;
 var gameStateTransition = false;
@@ -59,8 +60,8 @@ function launchGame()
     stage.enableMouseOver();
 	stage.removeChildAt(0); //loading text
 
-    var test = new MouseZone(950, 500, 200, 70);
-    var testsq = new MouseZone(50, 50, 150, 150);
+    interactiveObjects.push(new MouseZone(950, 500, 200, 70));
+    interactiveObjects.push(new MouseZone(50, 50, 150, 150));
 
     player = new Player(imgPlayer, [500, 400, 600]);
     player.start = true;

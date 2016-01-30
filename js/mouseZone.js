@@ -1,6 +1,9 @@
 function MouseZone(x, y, w, h)
 {
-    var state = "inactive";
+    this.xBegin = x;
+    this.xEnd = x+w;
+
+    this.state = "inactive";
 
     var timer;
     var clickedDuration = 0;
@@ -15,37 +18,44 @@ function MouseZone(x, y, w, h)
     stage.addChild(testShape);
     eltsToUpdate.push(this);
 
+    var self = this; //for callbacks
     testShape.on("mousedown", function() {
-        testShape.cursor = "pointer";
-        timer = new VisualTimer(clickTimeInSec, x + w/2, y + h/2, incrementalTimer);
-        state = "clicked";
+        if(self.state == "inactive") {
+            timer = new VisualTimer(clickTimeInSec, x + w / 2, y + h / 2, incrementalTimer);
+            self.state = "clicked";
+        }
     });
 
     testShape.on("pressup", function() {
-        if(state == "clicked") {
+        if(self.state == "clicked") {
             timer.remove();
-            state = "inactive";
+            self.state = "inactive";
         }
         clickedDuration = 0;
     });
 
     this.update = function(event) {
-        if (state == "clicked") {
+        if (this.state == "clicked") {
             clickedDuration += event.delta/1000;
             if (clickedDuration > clickTimeInSec) {
                 timer.remove();
                 timer = new VisualTimer(3, x + w / 2, y + h / 2, decrementalTimer);
-                state = "active"
+                this.state = "active";
+                activeDuration = 0;
             }
         }
-        if(state == "active")
+        if(this.state == "active")
         {
             activeDuration += event.delta/1000;
             if (activeDuration > activeTimeInSec) {
                 timer.remove();
-                state = "inactive";
-                activeDuration = 0;
+                this.state = "inactive";
             }
         }
+    }
+
+    this.detect = function(){
+        this.state = "noticed";
+        timer.remove();
     }
 }

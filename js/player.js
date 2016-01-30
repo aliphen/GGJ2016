@@ -28,10 +28,28 @@ function Player(img, path) {
 
         if (Math.abs(destX - this.sprite.x) > 0.01) {
             //look left or right depending on walking direction
-            if(destX - this.sprite.x < 0)
-                this.sprite.scaleX = -1;
-            else
-                this.sprite.scaleX = 1;
+            var detectionMin;
+            var detectionMax;
+            if(destX - this.sprite.x < 0) {
+                this.sprite.scaleX = -1; //looking left
+                detectionMin = this.sprite.x - 50;
+                detectionMax = this.sprite.x;
+            }
+            else {
+                this.sprite.scaleX = 1; //looking right
+                detectionMin = this.sprite.x;
+                detectionMax = this.sprite.x + 50;
+            }
+
+            //check detection range
+            for(var i = 0; i < interactiveObjects.length; i ++)
+            {
+                var obj = interactiveObjects[i];
+                if(obj.state == "active" && detectionMin < obj.xEnd && detectionMax > obj.xBegin)
+                {
+                    obj.detect();
+                }
+            }
 
             //move
             var maxMove = this.speed*deltaT;
