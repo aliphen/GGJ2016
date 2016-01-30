@@ -1,5 +1,5 @@
 function Player(img, path) {
-    this.speed = 2.5;
+    this.speed = 0.1;
 
     var ipath = 0;
 
@@ -8,7 +8,7 @@ function Player(img, path) {
         frames: {height: 245, width: 62, regX: 62/2},
         animations: {
             still: [0, 0],
-            walk: [1, 8, "walk", 0.2]
+            walk: [1, 8, "walk", 2.25*this.speed]
         }
     });
 
@@ -19,7 +19,7 @@ function Player(img, path) {
     eltsToUpdate.push(this);
 
     this.update = function (event) {
-        var deltaT = event.delta / 30; //usually approximately 1
+        var deltaT = event.delta;
 
         var destX = path[ipath];
         if (Math.abs(destX - this.sprite.x) > 0.01) {
