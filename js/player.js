@@ -90,13 +90,15 @@ function Player(img, path) {
                     }
                 }
             }
-            else
+            else {
                 ipath++;
-        }
-        if (ipath == path.length + 1 && transition == null) // end of the path : trigger transition
-        {
-            this.sprite.gotoAndPlay("still");
-            transition = new Transition();
+
+                if (ipath == path.length && transition == null){ // end of the path : trigger transition
+                    this.sprite.gotoAndPlay("still");
+                    overridenDest = this.sprite.x; //prevent movement
+                    transition = new Transition();
+                }
+            }
         }
     };
 
