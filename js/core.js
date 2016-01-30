@@ -103,15 +103,17 @@ function launchGame()
 
 function update(event)
 {
-    //  Use this to fade tracks in and out
-    //    fadeMusic(0, true);
-
 	stage.update(event);
     for(var i = 0; i < eltsToUpdate.length; i++)
         eltsToUpdate[i].update(event);
 
     if (gameStateTransition == true)
         transition.update(event);
+    if (gameStateTransition == false && transition != null)
+    {
+        transition.remove();
+        transition = null;
+    }
 }
 
 fadeMusic = function(layer, fadeIn) {

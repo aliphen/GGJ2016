@@ -52,8 +52,11 @@ function Transition() {
     this.startGameAfterTransition = function() {
         gameStateTransition = false;
         player.start = true;
+    };
 
-    }
+    this.remove = function() {
+        stage.removeChild(rectangleToCoverScene);
+    };
 }
 
 var TransitionStates = {
