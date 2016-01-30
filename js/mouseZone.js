@@ -1,6 +1,8 @@
 //sprite should have anims called still, click, active and decay
-function MouseZone(sprite)
-{
+function MouseZone(sprite){
+    var clickTimeInSec = 1;
+    var activeTimeInSec = 3;
+
     //won't move
     var x = sprite.x;
     var y = sprite.y;
@@ -16,8 +18,6 @@ function MouseZone(sprite)
     var timer;
     var clickedDuration = 0;
     var activeDuration = 0;
-    var clickTimeInSec = 1;
-    var activeTimeInSec = 3;
 
     stage.addChild(sprite);
     sprite.cursor = "pointer";
