@@ -9,6 +9,7 @@ function Player(img, path) {
 
     var debug = new createjs.Bitmap(imgDebug);
     debug.scaleY = 306;
+    debug.visible = false;
     stage.addChild(debug);
 
     var spSheet = new createjs.SpriteSheet({
