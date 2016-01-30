@@ -1,6 +1,7 @@
-function Player(img) {
-    this.destX;
+function Player(img, path) {
     this.speed = 4;
+
+    var ipath = 0;
 
     var spSheet = new createjs.SpriteSheet({
         images: [img],
@@ -20,10 +21,15 @@ function Player(img) {
     this.update = function (event) {
         var deltaT = event.delta / 30; //usually approximately 1
 
-        if (this.destX && Math.abs(this.destX - this.sprite.x) > 0.01) {
+        var destX = path[ipath];
+        if (Math.abs(destX - this.sprite.x) > 0.01) {
             //move
             var maxMove = this.speed*deltaT;
-            this.sprite.x += Math.min(Math.max(this.destX - this.sprite.x, -maxMove), maxMove);
+            this.sprite.x += Math.min(Math.max(destX - this.sprite.x, -maxMove), maxMove);
+        }
+        else{ //destination reached
+            //pause for a bit, play an anim ?
+            ipath++;
         }
     }
 }

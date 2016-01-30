@@ -62,26 +62,23 @@ function launchGame()
     textBar.x = textBar.y = 10;
     stage.addChild(textBar);
 
-    var bg = new MouseZone(0, 0, 1200, 600,
-        function(){textBar.text = "Your apartment"},
-        function(event){player.destX = event.stageX});
     var test = new MouseZone(950, 590, 200, 70,
         function(){textBar.text = "A clickable rectangle"},
         function(){
             textBar.text = "Action !";
-            player.destX = test.xTarget;
+            //player.destX = test.xTarget;
         });
     var testsq = new MouseZone(50, 50, 150, 150,
         function(){textBar.text = "A square"},
         function(){
             textBar.text = "Action !";
-            player.destX = testsq.xTarget;
+            //player.destX = testsq.xTarget;
         });
 
     var timer3s = new VisualTimer(3, 300, 100);
     var timer6s = new VisualTimer(6, 400, 100);
 
-    var player = new Player(imgPlayer);
+    var player = new Player(imgPlayer, [800, 50, 1000]);
     eltsToUpdate.push(new TextBox(player, "HelloWorld !"));
 
 	createjs.Ticker.setFPS(30);
