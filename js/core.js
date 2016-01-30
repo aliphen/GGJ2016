@@ -1,7 +1,7 @@
 displayDebug = false;
 
 var preloadCount = 0;
-var preloadTotal = 1;
+var preloadTotal = 2;
 
 var stage;
 var player;
@@ -13,6 +13,7 @@ var gameStateTransition = false;
 
 // Images assets
 var imgPlayer;
+var imgBg;
 // Images assets end
 
 // Sound assets
@@ -37,6 +38,10 @@ function preloadAssets()
 	imgPlayer.onload = preloadUpdate;
 	imgPlayer.src = "media/Personnage.png";
 
+    imgBg = new Image();
+    imgBg.onload = preloadUpdate;
+    imgBg.src = "media/Decor-01.png";
+
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/layer1.mp3", "soundtrackLayer1");
     createjs.Sound.registerSound("media/music/layer2.mp3", "soundtrackLayer2");
@@ -60,7 +65,10 @@ function launchGame()
     stage.enableMouseOver();
 	stage.removeChildAt(0); //loading text
 
-    interactiveObjects.push(new MouseZone(950, 500, 200, 70));
+    var objBg = new createjs.Bitmap(imgBg);
+    stage.addChild(objBg);
+
+    interactiveObjects.push(new MouseZone(950, 230, 200, 70));
     interactiveObjects.push(new MouseZone(50, 50, 150, 150));
 
     player = new Player(imgPlayer, [500, 400, 600]);

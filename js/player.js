@@ -14,7 +14,7 @@ function Player(img, path) {
     });
 
     this.sprite = new createjs.Sprite(spSheet, "walk");
-    this.sprite.y = 200;
+    this.sprite.y = 61;
     this.sprite.x = 400;
     stage.addChild(this.sprite);
     eltsToUpdate.push(this);
