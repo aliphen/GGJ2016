@@ -9,7 +9,6 @@ var eltsToUpdate = [];
 var interactiveObjects = [];
 
 var transition;
-var gameStateTransition = false;
 
 // Images assets
 var imgPlayer;

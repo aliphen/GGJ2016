@@ -1,4 +1,5 @@
 var rectangleToCoverScene = null;
+var gameStateTransition = false;
 
 function Transition() {
     gameStateTransition = true;
@@ -35,8 +36,7 @@ function Transition() {
                 if (rectangleToCoverScene.alpha > 0)
                     rectangleToCoverScene.alpha -= 0.01;
                 else {
-                    gameStateTransition = false;
-                    player.start = true;
+                    this.startGameAfterTransition();
                 }
                 break;
         }
@@ -45,10 +45,15 @@ function Transition() {
     this.resetRoom = function() {
         // whatever is required during the fade to black to reset the game.
         // TODO play interlude sound
-        player.remove();
-        player = new Player(imgPlayer, [500, 400, 600]); // TODO do not start moving before the end of transition
+        player.reset();
 
     };
+
+    this.startGameAfterTransition = function() {
+        gameStateTransition = false;
+        player.start = true;
+
+    }
 }
 
 var TransitionStates = {

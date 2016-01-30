@@ -82,7 +82,7 @@ function Player(img, path) {
         }
         if (ipath == path.length + 1 && transition == null) // end of the path : trigger transition
             transition = new Transition();
-    }
+    };
 
     var savediPath;
     var self = this;
@@ -94,9 +94,17 @@ function Player(img, path) {
             ipath = savediPath;
             self.sprite.gotoAndPlay("walk");
         }, timeInMs)
-    }
+    };
 
     this.remove = function() {
         stage.removeChild(this.sprite);
-    }
+    };
+
+    this.reset = function() {
+        this.speed = 0.1;
+        this.start = false;
+        ipath = 0;
+        this.sprite.y = 61;
+        this.sprite.x = 400;
+    };
 }
