@@ -1,7 +1,7 @@
 displayDebug = false;
 
 var preloadCount = 0;
-var preloadTotal = 2;
+var preloadTotal = 3;
 
 var stage;
 var player;
@@ -14,6 +14,7 @@ var gameStateTransition = false;
 // Images assets
 var imgPlayer;
 var imgBg;
+var imgFlower;
 // Images assets end
 
 // Sound assets
@@ -42,6 +43,10 @@ function preloadAssets()
     imgBg.onload = preloadUpdate;
     imgBg.src = "media/Decor-01.png";
 
+    imgFlower = new Image();
+    imgFlower.onload = preloadUpdate;
+    imgFlower.src = "media/Fleur-01.png";
+
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/layer1.mp3", "soundtrackLayer1");
     createjs.Sound.registerSound("media/music/layer2.mp3", "soundtrackLayer2");
@@ -68,10 +73,24 @@ function launchGame()
     var objBg = new createjs.Bitmap(imgBg);
     stage.addChild(objBg);
 
-    interactiveObjects.push(new MouseZone(950, 230, 200, 70));
-    interactiveObjects.push(new MouseZone(50, 50, 150, 150));
+    //interactiveObjects.push(new MouseZone(950, 230, 200, 70));
 
-    player = new Player(imgPlayer, [500, 400, 600]);
+    var spSheetFlower = new createjs.SpriteSheet({
+        images: [imgFlower],
+        frames: {height: 56, width: 38},
+        animations: {
+            still: [0, 0],
+            click: [1, 4, "active", 0.1],
+            active: [4, 4],
+            decay: [5, 7, "still", 0.1]
+        }
+    });
+    var spriteFlower = new createjs.Sprite(spSheetFlower, "still");
+    spriteFlower.x = 510;
+    spriteFlower.y = 149;
+    interactiveObjects.push(new MouseZone(spriteFlower));
+
+    player = new Player(imgPlayer, [500, 60, 1000]);
     player.start = true;
     var tb = new TextBox(player, "HelloWorld !");
 

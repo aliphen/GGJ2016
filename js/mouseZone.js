@@ -1,7 +1,15 @@
-function MouseZone(x, y, w, h)
+//sprite should have anims called still, click, active and decay
+function MouseZone(sprite)
 {
+    //won't move
+    var x = sprite.x;
+    var y = sprite.y;
+    var w = sprite.getBounds().width;
+    var h = sprite.getBounds().height;
+
     this.xBegin = x;
     this.xEnd = x+w;
+
 
     this.state = "inactive";
 
@@ -11,25 +19,24 @@ function MouseZone(x, y, w, h)
     var clickTimeInSec = 1;
     var activeTimeInSec = 3;
 
-    var underlyingShape = new createjs.Shape();
-    underlyingShape.graphics.beginFill("rgba(255,0,0,0.5)").drawRect(x, y, w, h);
-    underlyingShape.cursor = "pointer";
-
-    stage.addChild(underlyingShape);
+    stage.addChild(sprite);
+    sprite.cursor = "pointer";
     eltsToUpdate.push(this);
 
     var self = this; //for callbacks
-    underlyingShape.on("mousedown", function() {
+    sprite.on("mousedown", function() {
         if(self.state == "inactive") {
-            timer = new VisualTimer(clickTimeInSec, x + w / 2, y + h / 2, incrementalTimer);
+            timer = new VisualTimer(clickTimeInSec, x + w/2, y + h/2, incrementalTimer);
             self.state = "clicked";
+            this.gotoAndPlay("click");
         }
     });
 
-    underlyingShape.on("pressup", function() {
+    sprite.on("pressup", function() {
         if(self.state == "clicked") {
             timer.remove();
             self.state = "inactive";
+            this.gotoAndPlay("still");
         }
         clickedDuration = 0;
     });
@@ -41,6 +48,7 @@ function MouseZone(x, y, w, h)
                 timer.remove();
                 timer = new VisualTimer(3, x + w / 2, y + h / 2, decrementalTimer);
                 this.state = "active";
+                sprite.gotoAndPlay("active");
                 activeDuration = 0;
             }
         }
@@ -50,6 +58,7 @@ function MouseZone(x, y, w, h)
             if (activeDuration > activeTimeInSec) {
                 timer.remove();
                 this.state = "inactive";
+                sprite.gotoAndPlay("decay");
             }
         }
     }
