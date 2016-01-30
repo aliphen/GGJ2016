@@ -39,30 +39,25 @@ function startGame()
 
 function preloadAssets()
 {
-    imgPlayer = new Image();
-	imgPlayer.onload = preloadUpdate;
-	imgPlayer.src = "media/Personnage.png";
-
-    imgBg = new Image();
-    imgBg.onload = preloadUpdate;
-    imgBg.src = "media/Decor-01.png";
-
-    imgFlower = new Image();
-    imgFlower.onload = preloadUpdate;
-    imgFlower.src = "media/Fleur-01.png";
-
-    imgDebug = new Image();
-    imgDebug.onload = preloadUpdate;
-    imgDebug.src = "media/debug.png";
-
-    imgYeux = new Image();
-    imgYeux.onload = preloadUpdate;
-    imgYeux.src = "media/lesyeux.png";
+    imgPlayer = loadImg("Personnage.png");
+    imgBg = loadImg("Decor-01.png");
+    imgFlower = loadImg("Fleur-01.png");
+    imgDebug = loadImg("debug.png");
+    imgYeux = loadImg("lesyeux.png");
 
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/layer1.mp3", soundtrackLayer1);
     createjs.Sound.registerSound("media/music/layer2.mp3", soundtrackLayer2);
 }
+
+function loadImg(name)
+{
+    var img = new Image();
+    img.onload = preloadUpdate;
+    img.src = "media/" + name;
+    return img;
+}
+
 function playMusicLayers(event)
 {
     var instance = createjs.Sound.play(event.id, {loop:-1});
