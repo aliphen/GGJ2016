@@ -76,6 +76,9 @@ function launchGame()
             player.destX = testsq.xTarget;
         });
 
+    var timer3s = new VisualTimer(3, 300, 100);
+    var timer6s = new VisualTimer(6, 400, 100);
+
     var player = new Player(imgPlayer);
 
 	createjs.Ticker.setFPS(30);
