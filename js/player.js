@@ -1,5 +1,5 @@
 function Player(img, path) {
-    this.speed = 4;
+    this.speed = 2.5;
 
     var ipath = 0;
 
@@ -8,7 +8,7 @@ function Player(img, path) {
         frames: {height: 245, width: 62, regX: 62/2},
         animations: {
             still: [0, 0],
-            walk: [1, 6, "walk", 0.4]
+            walk: [1, 8, "walk", 0.2]
         }
     });
 
