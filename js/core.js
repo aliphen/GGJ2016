@@ -6,7 +6,7 @@ var preloadCount = 0;
 var preloadTotal = 1;
 
 var stage;
-var player;
+var eltsToUpdate = [];
 
 var imgPlayer;
 
@@ -76,7 +76,7 @@ function launchGame()
             player.destX = testsq.xTarget;
         });
 
-    player = new Player(imgPlayer);
+    var player = new Player(imgPlayer);
 
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
@@ -106,7 +106,8 @@ function update(event)
     //    fadeMusic(0, true);
 
 	stage.update(event);
-    player.update(event);
+    for(var i = 0; i < eltsToUpdate.length; i++)
+        eltsToUpdate[i].update(event);
 }
 
 fadeMusic = function(layerId, fadeIn)

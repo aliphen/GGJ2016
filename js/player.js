@@ -14,6 +14,7 @@ function Player(img) {
     sprite.y = 200;
     sprite.x = 400;
     stage.addChild(sprite);
+    eltsToUpdate.push(this);
     //use gotoAndPlay to change anim
 
     this.update = function (event) {
