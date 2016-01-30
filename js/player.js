@@ -1,5 +1,5 @@
 function Player(img, path) {
-    var visionRange = 50; // FoV
+    var visionRange = 75; // FoV
 
     this.speed = 0.1;
     this.start = false;

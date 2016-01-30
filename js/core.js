@@ -105,7 +105,7 @@ function launchGame()
     spriteFlower.y = 149;
     interactiveObjects.push(new MouseZone(spriteFlower, spriteYeux));
 
-    player = new Player(imgPlayer, [900, 60, 1000]);
+    player = new Player(imgPlayer, [900, 60, 1250]);
     player.start = true;
     var tb = new TextBox(player, "HelloWorld !");
 
