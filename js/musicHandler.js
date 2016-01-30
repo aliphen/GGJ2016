@@ -24,16 +24,16 @@ function MusicHandler() {
                 case (MusicStates.Neutral):
                     break;
                 case (MusicStates.FadingIn):
-                    if (layer.volume >= 1)
+                    if (layer.volume >= 0.5)
                         fadesInProgress[i] = [layerName, MusicStates.Neutral];
                     else
-                        layer.volume += 0.02;
+                        layer.volume += 0.01;
                     break;
                 case (MusicStates.FadingOut):
                     if (layer.volume <= 0)
                         fadesInProgress[i] = [layerName, MusicStates.Neutral];
                     else
-                        layer.volume -= 0.03;
+                        layer.volume -= 0.01;
                     break;
             }
         }
