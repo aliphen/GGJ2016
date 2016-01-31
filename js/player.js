@@ -1,6 +1,6 @@
 function Player(img, imgWakeUp, path, callbacks) {
     var self = this;
-    var visionRange = 75; // FoV
+    var visionRange = 50; // FoV
 
     this.speed = 0.1;
     this.start = false;
@@ -95,7 +95,6 @@ function Player(img, imgWakeUp, path, callbacks) {
                 if(obj.state == "active" && detectionMin < obj.xEnd && detectionMax > obj.xBegin) {
                     obj.detect();
                     this.foundItemsCounter++;
-                    texts.displayTextForObject(obj.name);
                     switch (this.foundItemsCounter) {
                         case (1): createjs.Sound.play(achievementA); break;
                         case (2): createjs.Sound.play(achievementB); break;
@@ -129,6 +128,7 @@ function Player(img, imgWakeUp, path, callbacks) {
                             case ("phone"): break; //createjs.Sound.play(achievementE); break;
                             default: break;
                         }
+                        texts.displayTextForObject(obj.name);
                         this.sprite.gotoAndPlay(obj.name);
                         this.stopFor(obj.stareTimeInMs);
                         break;
