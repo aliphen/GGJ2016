@@ -102,7 +102,6 @@ function Player(img, path) {
                     if (this.foundItemsCounter == 5) { // end of the game ! Trigger reward instead of transition
                         gameHasEnded = true;
                         texts.removeTextBox();
-                        final = new EndGame();
                     }
                     else {
                         transition = new Transition();

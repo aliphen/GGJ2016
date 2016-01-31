@@ -10,7 +10,7 @@ var interactiveObjects = [];
 
 // states
 var transition;
-var final;
+var finalState = null;
 var gameHasEnded = false;
 
 // Images assets
@@ -186,8 +186,11 @@ function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name)
 function update(event)
 {
 	stage.update(event);
-    if (gameHasEnded) // endgame screen hijacks everything else
-        final.update(event);
+    if (gameHasEnded) { // endgame screen hijacks everything else
+        if (finalState == null)
+            finalState = new EndGame();
+        finalState.update(event);
+    }
     else {
         for(var i = 0; i < eltsToUpdate.length; i++)
             eltsToUpdate[i].update(event);
