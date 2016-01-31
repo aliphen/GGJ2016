@@ -19,8 +19,8 @@ function Texts() {
     texts["aquarium"][2] = "\"Why did I even buy an aquarium for? It's such a burden.\"";
 
     texts["phone"] = [];
-    texts["phone"][0] = "A message?\0\0\0\0\0\0\0\0\0   \"Greetings from your fortune teller! Your fate today is to have a happy day\"\0\0\0\0\0\0\0\0\0   Haha! What a kind joke.";
-    texts["phone"][1] = "\"How lucky!\0\0\0\0\0\0 Once again, your fate is to have a happy day!\"\0\0\0\0\0\0\0\0\0   I'm starting to think it's true!";
+    texts["phone"][0] = "A message?\0\0\0\0\0\0\0\0\0   \"Greetings from your fortune teller!\0\0\0\0\0\0 Your fate today is to have a happy day\"\0\0\0\0\0\0\0\0\0   Haha! What a kind joke.";
+    texts["phone"][1] = "\"How lucky!\0\0\0\0\0\0 Once again,\0\0\0\0\0\0 your fate is to have a happy day!\"\0\0\0\0\0\0\0\0\0   I'm starting to think it's true!";
     texts["phone"][2] = "\"I never give my phone number to anyone. No wonder no one ever calls me.\"";
 
     texts["photo"] = [];
@@ -33,8 +33,8 @@ function Texts() {
 
     texts["chitchat"] = [];
     texts["chitchat"][0] = "Why do I keep living this kind of life?";
-    texts["chitchat"][1] = "I have a feeling tomorrow will be better ? Is it... \0\0\0\0\0\0hope?";
-    texts["chitchat"][2] = "I feel like today was... \0\0\0\0\0\0better, I guess.";
+    texts["chitchat"][1] = "I have a feeling tomorrow will be better ? Is it... hope?";
+    texts["chitchat"][2] = "I feel like today was... better, I guess.";
     texts["chitchat"][3] = "Today was a fun day.";
     texts["chitchat"][4] = "I could keep living like that forever.";
 
