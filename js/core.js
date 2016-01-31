@@ -43,10 +43,12 @@ var soundtrackLayer2 = "soundtrackLayer2";
 var soundtrackLayer3 = "soundtrackLayer3";
 var musicHandler;
 
-var foley1 = "foley1"; // use obj.name to play(obj.name)
+var foley1 = "foley1"; // TODO use obj.name to play(obj.name)
 // Sound assets end
 
 var texts;
+
+var objectsToDiscover = ["window", "flower", "aquarium", "phone", "photo"]; // used to provide advice on black screen, never reset
 
 function startGame()
 {

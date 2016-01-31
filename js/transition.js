@@ -11,14 +11,31 @@ function Transition() {
     rectangleToCoverScene.alpha = 0;
     stage.addChild(rectangleToCoverScene);
 
+    // find the first appliable advice to display
+    var adviceText = "";
+    for (var i = 0; i < objectsToDiscover.length; i++) {
+        if (objectsToDiscover[i] != "") { // not discovered yet
+            adviceText = texts.returnAdvice(objectsToDiscover[i]);
+            break;
+        }
+    }
+    var textOnTransition = new createjs.Text(adviceText, "20px Segoe", "#ffffff");
+    textOnTransition.x = 20;
+    textOnTransition.y = 150;
+    textOnTransition.visible = true;
+    textOnTransition.alpha = 0;
+    stage.addChild(textOnTransition);
+
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.PartialFadeOut);
     musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingOut);
 
     this.update = function(event) {
         switch (transitionState) {
             case (TransitionStates.FadingToBlack):
-                if (rectangleToCoverScene.alpha < 1)
+                if (rectangleToCoverScene.alpha < 1) {
                     rectangleToCoverScene.alpha += 0.01;
+                    textOnTransition.alpha += 0.01;
+                }
                 else {
                     transitionState = TransitionStates.Pause;
                     this.resetRoom();
@@ -34,8 +51,10 @@ function Transition() {
                 }
                 break;
             case (TransitionStates.FadingToGame):
-                if (rectangleToCoverScene.alpha > 0)
+                if (rectangleToCoverScene.alpha > 0) {
                     rectangleToCoverScene.alpha -= 0.01;
+                    textOnTransition.alpha -= 0.01;
+                }
                 else {
                     this.startGameAfterTransition();
                 }
@@ -56,6 +75,7 @@ function Transition() {
     };
 
     this.remove = function() {
+        stage.removeChild(textOnTransition);
         stage.removeChild(rectangleToCoverScene);
     };
 }

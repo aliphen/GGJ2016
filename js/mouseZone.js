@@ -93,6 +93,12 @@ function MouseZone(sprite, yeux, mask, name){
         mask.alpha = 0;
         sprite.cursor = null;
         timer.remove();
+        for (var i = 0; i < objectsToDiscover.length; i++) {
+            if (objectsToDiscover[i] == name) { // discovered
+                objectsToDiscover[i] = "";
+                break;
+            }
+        }
     };
 
     this.reset = function() {

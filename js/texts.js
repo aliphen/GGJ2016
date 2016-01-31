@@ -6,27 +6,27 @@ function Texts() {
     texts["window"] = [];
     texts["window"][0] = "I hate rain. But I have to admit, this rainbow is beautiful.";
     texts["window"][1] = "An everlasting rainbow is the best!";
-    texts["window"][2] = "I don't even want to watch outside, I know it's still raining today.";
+    texts["window"][2] = "\"I don't even want to watch outside, I know it's still raining today.\"";
 
     texts["flower"] = [];
     texts["flower"][0] = "I thought that flower had already faded. It looks nice and colorful.";
     texts["flower"][1] = "As pretty as ever.";
-    texts["flower"][2] = "I wish I had taken care of my flower. It used to give color to this room.";
+    texts["flower"][2] = "\"I wish I had taken care of my flower. It used to give color to this room.\"";
 
     texts["aquarium"] = [];
     texts["aquarium"][0] = "What...!? How...? Well... Whatever, it's shiny.";
     texts["aquarium"][1] = "There you are again, invisible magical fish.";
-    texts["aquarium"][2] = "Why did I even buy an aquarium for? It's such a burden.";
+    texts["aquarium"][2] = "\"Why did I even buy an aquarium for? It's such a burden.\"";
 
     texts["phone"] = [];
     texts["phone"][0] = "A message? \"Greetings from your fortune teller! Your fate today is to have a happy day\" Haha! What a kind joke.";
     texts["phone"][1] = "Another message? \"As usual, it's your fortune teller! How lucky you are! Once again, your fate is to have a happy day!\" I'm starting to think it's true!";
-    texts["phone"][2] = "I never gave my phone number to anyone. No wonder no one ever calls me.";
+    texts["phone"][2] = "\"I never gave my phone number to anyone. No wonder no one ever calls me.\"";
 
     texts["photo"] = [];
     texts["photo"][0] = "This picture... So many memories. It feels like I am smiling even though I'm not.";
     texts["photo"][1] = "I love this photograph... Do I always look that happy?";
-    texts["photo"][2] = "My shelf is so dusty. But I'm too lazy to clean it.";
+    texts["photo"][2] = "\"My bookshelf is so dusty. But I'm too lazy to clean it.\"";
 
     texts["chitchat"] = [];
     texts["chitchat"][0] = "Why do I keep living this kind of life?";
@@ -70,6 +70,10 @@ function Texts() {
 
     this.removeTextBox = function() {
         currentTextBox.remove();
+    }
+
+    this.returnAdvice = function(name) {
+        return texts[name][2];
     }
 }
 
