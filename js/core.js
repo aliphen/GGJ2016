@@ -93,6 +93,7 @@ function preloadAssets()
     imgShower =    loadImg("shower.png");
     imgWake =      loadImg("wakeup.png");
 
+    // register foley
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement A.mp3", achievementA, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement B.mp3", achievementB, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement C.mp3", achievementC, 2);
@@ -255,6 +256,14 @@ function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name, stareTime
     sprite.x = x;
     sprite.y = y;
     interactiveObjects.push(new MouseZone(sprite, spriteYeux, spriteMask, name, stareTimeInMs));
+}
+
+function updateAllClickablesStatus(status)
+{
+    for(var i = 0; i < interactiveObjects.length; i++) {
+        var obj = interactiveObjects[i];
+        obj.state = status;
+    }
 }
 
 function update(event)
