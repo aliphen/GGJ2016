@@ -22,8 +22,8 @@ function Transition() {
         }
     }
     var textOnTransition = new createjs.Text(adviceText, "20px ArchivoNarrow", "#ffffff");
-    textOnTransition.x = 160;
-    textOnTransition.y = 150;
+    textOnTransition.x = 200;
+    textOnTransition.y = 130;
     textOnTransition.visible = true;
     textOnTransition.alpha = 0;
     stage.addChild(textOnTransition);

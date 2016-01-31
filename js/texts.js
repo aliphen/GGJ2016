@@ -6,10 +6,10 @@ function Texts() {
     texts["window"] = [];
     texts["window"][0] = "I'm ok with a little rain if it creates such a great rainbow.";
     texts["window"][1] = "An everlasting rainbow is the best!";
-    texts["window"][2] = "\"I don't even want to watch outside, I know it's still raining today.\"";
+    texts["window"][2] = "\"I don't even want to take a look outside, I know it's still raining today.\"";
 
     texts["flower"] = [];
-    texts["flower"][0] = "I thought that flower had already faded.\0\0\0\0\0\0\0\0\0 It looks nice and colorful.";
+    texts["flower"][0] = "I thought that flower had already faded.\0\0\0\0\0\0\0\0\0 It looks nice and colorful now.";
     texts["flower"][1] = "As pretty as ever...";
     texts["flower"][2] = "\"I wish I had taken care of my flower. It used to give color to this room.\"";
 
