@@ -93,6 +93,7 @@ function Player(img, imgWakeUp, path, callbacks) {
             for(var i = 0; i < interactiveObjects.length; i ++) {
                 var obj = interactiveObjects[i];
                 if(obj.state == "active" && detectionMin < obj.xEnd && detectionMax > obj.xBegin) {
+                    updateAllClickablesStatus("frozen"); //other objects are not clickable during interaction
                     obj.detect();
                     this.foundItemsCounter++;
                     switch (this.foundItemsCounter) {
@@ -134,7 +135,7 @@ function Player(img, imgWakeUp, path, callbacks) {
                         }
                         texts.displayTextForObject(obj.name);
                         this.sprite.gotoAndPlay(obj.name);
-                        this.stopFor(obj.stareTimeInMs);
+                        this.stopFor(obj.stareTimeInMs, undefined, function(){updateAllClickablesStatus("inactive")});
                         break;
                     }
                 }
@@ -203,9 +204,6 @@ function Player(img, imgWakeUp, path, callbacks) {
         wakeSprite.visible = false;
         self.sprite.visible = true;
         //allow interactions
-        for(var i = 0; i < interactiveObjects.length; i++){
-            var obj = interactiveObjects[i];
-            obj.state = "inactive";
-        }
+        updateAllClickablesStatus("inactive");
     });
 }

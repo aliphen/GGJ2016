@@ -33,11 +33,7 @@ function Transition() {
     createjs.Sound.play(rumble);
 
     //disable all objects
-    for(i = 0; i < interactiveObjects.length; i++){
-        var obj = interactiveObjects[i];
-        obj.state = "frozen";
-    }
-
+    updateAllClickablesStatus("frozen");
 
     this.update = function(event) {
         switch (transitionState) {
@@ -81,10 +77,7 @@ function Transition() {
 
     this.startGameAfterTransition = function() {
         //enable all objects
-        for(i = 0; i < interactiveObjects.length; i++){
-            var obj = interactiveObjects[i];
-            obj.state = "inactive";
-        }
+        updateAllClickablesStatus("inactive");
         gameStateTransition = false;
         player.startMoving();
     };
