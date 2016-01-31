@@ -18,12 +18,12 @@ function Texts() {
     texts["aquarium"][2] = "Why did I even buy an aquarium for? It's such a burden.";
 
     texts["phone"] = [];
-    texts["phone"][0] = "A message? | \"Greetings from your fortune teller! Your fate today is to have a happy day\" | Ha ! Ha ! Ha ! What a kind joke.";
-    texts["phone"][1] = "Another message? | \"As usual, it's your fortune teller! How lucky you are! Once again, your fate is to have a happy day!\" | Ha ! Ha ! I'm starting to think it's true.";
+    texts["phone"][0] = "A message? \"Greetings from your fortune teller! Your fate today is to have a happy day\" Haha! What a kind joke.";
+    texts["phone"][1] = "Another message? \"As usual, it's your fortune teller! How lucky you are! Once again, your fate is to have a happy day!\" I'm starting to think it's true!";
     texts["phone"][2] = "I never gave my phone number to anyone. No wonder no one ever calls me.";
 
     texts["photo"] = [];
-    texts["photo"][0] = "This picture... So many memories. | I'm not even smiling, but now it feels like I am.";
+    texts["photo"][0] = "This picture... So many memories. I'm not even smiling, but now it feels like I am.";
     texts["photo"][1] = "What a photo... Do I always look that happy?";
     texts["photo"][2] = "My shelf is so dusty. But I'm too lazy to clean it.";
 
@@ -44,7 +44,7 @@ function Texts() {
     alreadyDisplayed["photo"] = -1;
     alreadyDisplayed["chitchat"] = -1;
 
-    this.displayTextForObject = function(objectName, player){
+    this.displayTextForObject = function(objectName){
         var textToDisplay = "";
         switch (alreadyDisplayed[objectName]) {
             case (-1):
@@ -64,7 +64,7 @@ function Texts() {
             default:
                 break;
         }
-        new TextBox(player, textToDisplay);
+        new TextBox(textToDisplay);
     }
 }
 
