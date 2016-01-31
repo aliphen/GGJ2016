@@ -22,7 +22,7 @@ function Transition() {
         }
     }
     var textOnTransition = new createjs.Text(adviceText, "20px ArchivoNarrow", "#ffffff");
-    textOnTransition.x = 20;
+    textOnTransition.x = 100;
     textOnTransition.y = 150;
     textOnTransition.visible = true;
     textOnTransition.alpha = 0;

@@ -59,6 +59,7 @@ var windowSound = "windowSound";
 var phoneSound = "phoneSound";
 var photoSound = "photoSound";
 var winSound = "winSound";
+var stepSoundInstance;
 // Sound assets end
 
 var texts;
@@ -111,6 +112,10 @@ function preloadAssets()
     createjs.Sound.registerSound("media/music/Ohayo - SD - Telephone End A.mp3", phoneSound, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Blow B.mp3", photoSound, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Win B.mp3", winSound, 2);
+
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Step.mp3", "stepSound", 2);
+    stepSoundInstance = createjs.Sound.play("stepSound", {loop:-1});
+    stepSoundInstance.volume = 0;
 
 
     // register music (after foley to avoid triggering the soundtrack load event
