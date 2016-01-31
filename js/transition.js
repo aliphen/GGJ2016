@@ -2,6 +2,8 @@ var rectangleToCoverScene = null;
 var gameStateTransition = false;
 
 function Transition() {
+    var transitionSpeed = 0.02;
+
     gameStateTransition = true;
     var timeInPauseCounter = 30;
     var transitionState = TransitionStates.FadingToBlack;
@@ -33,8 +35,8 @@ function Transition() {
         switch (transitionState) {
             case (TransitionStates.FadingToBlack):
                 if (rectangleToCoverScene.alpha < 1) {
-                    rectangleToCoverScene.alpha += 0.01;
-                    textOnTransition.alpha += 0.01;
+                    rectangleToCoverScene.alpha += transitionSpeed;
+                    textOnTransition.alpha += transitionSpeed;
                 }
                 else {
                     transitionState = TransitionStates.Pause;
@@ -52,8 +54,8 @@ function Transition() {
                 break;
             case (TransitionStates.FadingToGame):
                 if (rectangleToCoverScene.alpha > 0) {
-                    rectangleToCoverScene.alpha -= 0.01;
-                    textOnTransition.alpha -= 0.01;
+                    rectangleToCoverScene.alpha -= transitionSpeed;
+                    textOnTransition.alpha -= transitionSpeed;
                 }
                 else {
                     this.startGameAfterTransition();
