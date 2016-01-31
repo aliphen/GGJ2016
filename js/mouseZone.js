@@ -1,5 +1,5 @@
 //sprite should have anims called still, click, active and decay
-function MouseZone(sprite, yeux, name){
+function MouseZone(sprite, yeux, mask, name){
     this.name = name;
     var clickTimeInSec = 2; //Activation
     var activeTimeInSec = 2; // 
@@ -25,7 +25,9 @@ function MouseZone(sprite, yeux, name){
     var clickedDuration = 0;
     var activeDuration = 0;
 
+    mask.visible = false;
     stage.addChild(sprite);
+    stage.addChild(mask);
     stage.addChild(yeux);
     sprite.cursor = "pointer";
     eltsToUpdate.push(this);
@@ -74,8 +76,12 @@ function MouseZone(sprite, yeux, name){
         {
             if(yeux.visible) {
                 yeux.alpha = yeux.alpha - 0.05;
-                if(yeux.alpha < 0)
+                if(yeux.alpha < 0) {
                     yeux.visible = false;
+                }
+            }
+            if(mask.alpha < 1) {
+                mask.alpha = mask.alpha + 0.01;
             }
         }
     }
@@ -83,6 +89,8 @@ function MouseZone(sprite, yeux, name){
     this.detect = function(){
         this.state = "noticed";
         yeux.gotoAndPlay("open");
+        mask.visible = true;
+        mask.alpha = 0;
         sprite.cursor = null;
         timer.remove();
     }

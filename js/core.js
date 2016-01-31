@@ -13,12 +13,18 @@ var transition;
 // Images assets
 var imgPlayer;
 var imgBg;
-var imgFlower;
 var imgDebug;
 var imgYeux;
+var imgFlower;
 var imgWindow;
 var imgPhone;
 var imgAqua;
+
+var imgDecFlower;
+var imgDecWindow;
+var imgDecPhone;
+var imgDecAqua;
+var imgDecFrame;
 // Images assets end
 
 // Sound assets
@@ -45,14 +51,19 @@ function startGame()
 
 function preloadAssets()
 {
-    imgPlayer = loadImg("Personnage.png");
-    imgBg = loadImg("Decor-01.png");
-    imgFlower = loadImg("Fleur-01.png");
-    imgDebug = loadImg("debug.png");
-    imgYeux = loadImg("lesyeux.png");
-    imgWindow = loadImg("window.png");
-    imgPhone = loadImg("phone.png");
-    imgAqua = loadImg("aqua.png");
+    imgPlayer =    loadImg("Personnage.png");
+    imgBg =        loadImg("Decor-01.png");
+    imgFlower =    loadImg("Fleur-01.png");
+    imgDebug =     loadImg("debug.png");
+    imgYeux =      loadImg("lesyeux.png");
+    imgWindow =    loadImg("window.png");
+    imgPhone =     loadImg("phone.png");
+    imgAqua =      loadImg("aqua.png");
+    imgDecFlower = loadImg("decFlower.png");
+    imgDecWindow = loadImg("decWindow.png");
+    imgDecPhone =  loadImg("decPhone.png");
+    imgDecAqua =   loadImg("decAqua.png");
+    imgDecFrame =  loadImg("decFrame.png");
 
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/Aloop.mp3", soundtrackLayer1);
@@ -136,11 +147,11 @@ function launchGame()
         }
     });
 
-    createClickable(550,  149, spSheetFlower, spSheetYeux, "flower"  );
-    createClickable(50,   20,  spSheetFlower, spSheetYeux, "photo"   );
-    createClickable(170,  35,  spSheetWindow, spSheetYeux, "window"  );
-    createClickable(430,  163, spSheetAqua,   spSheetYeux, "aquarium");
-    createClickable(1000, 120, spSheetPhone,  spSheetYeux, "phone"   );
+    createClickable(550,  149, spSheetFlower, spSheetYeux, imgDecFlower, "flower"  );
+    createClickable(50,   20,  spSheetFlower, spSheetYeux, imgDecFrame,  "photo"   );
+    createClickable(170,  35,  spSheetWindow, spSheetYeux, imgDecWindow, "window"  );
+    createClickable(430,  163, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium");
+    createClickable(1000, 120, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   );
 
     player = new Player(imgPlayer, [900, 60, 1250]);
     player.start = true;
@@ -154,15 +165,16 @@ function launchGame()
 	createjs.Ticker.addEventListener("tick", update);
 }
 
-function createClickable(x, y, spSheetObj, spSheetYeux, name)
+function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name)
 {
     var spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
     spriteYeux.regX = 50;
     spriteYeux.regY = 100;
+    var spriteMask = new createjs.Bitmap(imgMask);
     var sprite = new createjs.Sprite(spSheetObj, "still");
     sprite.x = x;
     sprite.y = y;
-    interactiveObjects.push(new MouseZone(sprite, spriteYeux, name));
+    interactiveObjects.push(new MouseZone(sprite, spriteYeux, spriteMask, name));
 }
 
 function update(event)
