@@ -3,6 +3,7 @@ function MusicHandler() {
     fadesInProgress.push([soundtrackLayer1, MusicStates.Neutral]);
     fadesInProgress.push([soundtrackLayer2, MusicStates.Neutral]);
     fadesInProgress.push([soundtrackLayer3, MusicStates.Neutral]);
+    fadesInProgress.push([soundtrackLayer4, MusicStates.Neutral]);
     eltsToUpdate.push(this);
 
 

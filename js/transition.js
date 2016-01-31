@@ -30,6 +30,7 @@ function Transition() {
 
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.PartialFadeOut);
     musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingOut);
+    musicHandler.fadeMusic(soundtrackLayer4, MusicStates.FadingOut);
     createjs.Sound.play(rumble);
 
     //disable all objects
@@ -54,6 +55,7 @@ function Transition() {
                     transitionState = TransitionStates.FadingToGame;
                     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
                     musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingIn);
+                    musicHandler.fadeMusic(soundtrackLayer4, MusicStates.FadingIn);
                 }
                 break;
             case (TransitionStates.FadingToGame):

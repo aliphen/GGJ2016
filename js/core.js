@@ -41,6 +41,7 @@ var soundtrackLayers = [];
 var soundtrackLayer1 = "soundtrackLayer1";
 var soundtrackLayer2 = "soundtrackLayer2";
 var soundtrackLayer3 = "soundtrackLayer3";
+var soundtrackLayer4 = "soundtrackLayer4";
 var musicHandler;
 
 var achievementA = "achievementA";
@@ -113,6 +114,7 @@ function preloadAssets()
     createjs.Sound.registerSound("media/music/Aloop.mp3", soundtrackLayer1);
     createjs.Sound.registerSound("media/music/Astrart.mp3", soundtrackLayer2);
     createjs.Sound.registerSound("media/music/Bstartloop.mp3", soundtrackLayer3);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Clock.mp3", soundtrackLayer4);
 }
 
 function loadImg(name)
@@ -236,10 +238,9 @@ function launchGame()
     musicHandler = new MusicHandler();
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
     musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingIn);
+    musicHandler.fadeMusic(soundtrackLayer4, MusicStates.FadingIn);
 
     texts = new Texts();
-
-
 
     createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);
