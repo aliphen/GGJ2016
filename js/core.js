@@ -1,7 +1,7 @@
 displayDebug = false;
 
 var preloadCount = 0;
-var preloadTotal = 14;
+var preloadTotal = 15;
 
 var stage;
 var player;
@@ -22,6 +22,7 @@ var imgFlower;
 var imgWindow;
 var imgPhone;
 var imgAqua;
+var imgFrame;
 var imgFinal;
 
 var imgDecFlower;
@@ -63,6 +64,7 @@ function preloadAssets()
     imgWindow =    loadImg("window.png");
     imgPhone =     loadImg("phone.png");
     imgAqua =      loadImg("aqua.png");
+    imgFrame =     loadImg("frame.png");
     imgDecFlower = loadImg("decFlower.png");
     imgDecWindow = loadImg("decWindow.png");
     imgDecPhone =  loadImg("decPhone.png");
@@ -151,9 +153,19 @@ function launchGame()
             decay: [39, 74, "still", 0.78]
         }
     });
+    var spSheetFrame = new createjs.SpriteSheet({
+        images: [imgFrame],
+        frames: {height: 25, width: 30},
+        animations: {
+            still: 0,
+            click: [1, 2, "active", 0.07],
+            active: 3,
+            decay: [4, 5, "still", 0.5]
+        }
+    });
 
     createClickable(550,  149, spSheetFlower, spSheetYeux, imgDecFlower, "flower"  );
-    createClickable(50,   20,  spSheetFlower, spSheetYeux, imgDecFrame,  "photo"   );
+    createClickable(60,   45,  spSheetFrame,  spSheetYeux, imgDecFrame,  "photo"   );
     createClickable(170,  35,  spSheetWindow, spSheetYeux, imgDecWindow, "window"  );
     createClickable(430,  163, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium");
     createClickable(1000, 120, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   );
