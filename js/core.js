@@ -43,7 +43,11 @@ var soundtrackLayer2 = "soundtrackLayer2";
 var soundtrackLayer3 = "soundtrackLayer3";
 var musicHandler;
 
-var foley1 = "foley1"; // TODO use obj.name to play(obj.name)
+var achievementA = "achievementA";
+var achievementB = "achievementB";
+var achievementC = "achievementC";
+var achievementD = "achievementD";
+var achievementE = "achievementE";
 // Sound assets end
 
 var texts;
@@ -83,7 +87,11 @@ function preloadAssets()
     imgWake =      loadImg("wakeup.png");
 
 
-    createjs.Sound.registerSound("media/music/foley1.mp3", foley1, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement A.mp3", "achievementA", 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement B.mp3", "achievementB", 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement C.mp3", "achievementC", 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement D.mp3", "achievementD", 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement E.mp3", "achievementE", 2);
 
     // register music (after foley to avoid triggering the soundtrack load event
     createjs.Sound.addEventListener("fileload", playMusicLayers);

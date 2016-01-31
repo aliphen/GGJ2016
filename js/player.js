@@ -96,6 +96,15 @@ function Player(img, imgWakeUp, path, callbacks) {
                     obj.detect();
                     this.foundItemsCounter++;
                     texts.displayTextForObject(obj.name);
+                    switch (this.foundItemsCounter) {
+                        case (1): createjs.Sound.play(achievementA); break;
+                        case (2): createjs.Sound.play(achievementB); break;
+                        case (3): createjs.Sound.play(achievementC); break;
+                        case (4): createjs.Sound.play(achievementD); break;
+                        case (5): createjs.Sound.play(achievementE); break;
+                        default: break;
+                    }
+
                     this.sprite.gotoAndPlay("surprise");
                     this.stopFor(1000, obj.xPos);
                     break;
@@ -109,7 +118,6 @@ function Player(img, imgWakeUp, path, callbacks) {
                     if (obj.state == "noticed" && Math.abs(this.sprite.x - obj.xPos) < 0.5) {
                         //interact with object
                         obj.state = "used"; //do not interact again
-                        createjs.Sound.play(foley1);
                         this.sprite.gotoAndPlay(obj.name);
                         this.stopFor(obj.stareTimeInMs);
                         break;
