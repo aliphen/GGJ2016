@@ -36,4 +36,9 @@ function TextBox(textToDisplay) {
             this.textBoxSupport.alpha = 0;
         }
     }
+
+    this.remove = function (event) {
+        stage.removeChild(this.textBoxSupport);
+        stage.removeChild(this.currentTextBox);
+    }
 }

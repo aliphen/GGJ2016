@@ -1,4 +1,5 @@
 function Texts() {
+    var currentTextBox = null;
 
     var texts = [];
 
@@ -64,7 +65,9 @@ function Texts() {
             default:
                 break;
         }
-        new TextBox(textToDisplay);
+        if (currentTextBox != null)
+            currentTextBox.remove();
+        currentTextBox = new TextBox(textToDisplay);
     }
 }
 
