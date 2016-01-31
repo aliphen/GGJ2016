@@ -9,7 +9,7 @@ function Texts() {
     texts["window"][2] = "I don't even want to watch outside, I know it's still raining today.";
 
     texts["flower"] = [];
-    texts["flower"][0] = "I though that flower had already faded. It looks nice and pretty.";
+    texts["flower"][0] = "I thought that flower had already faded. It looks nice and pretty.";
     texts["flower"][1] = "This one is pretty as usual.";
     texts["flower"][2] = "I wish I had taken care of my flower. It used to give color to this room.";
 
