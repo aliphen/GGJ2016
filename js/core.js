@@ -41,6 +41,8 @@ var soundtrackLayer1 = "soundtrackLayer1";
 var soundtrackLayer2 = "soundtrackLayer2";
 var soundtrackLayer3 = "soundtrackLayer3";
 var musicHandler;
+
+var foley1 = "foley1"; // use obj.name to play(obj.name)
 // Sound assets end
 
 var texts;
@@ -76,6 +78,10 @@ function preloadAssets()
     imgFinal =     loadImg("Decor-final.png");
     imgShower =     loadImg("shower.png");
 
+
+    createjs.Sound.registerSound("media/music/foley1.mp3", foley1, 2);
+
+    // register music (after foley to avoid triggering the soundtrack load event
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/Aloop.mp3", soundtrackLayer1);
     createjs.Sound.registerSound("media/music/Astrart.mp3", soundtrackLayer2);
@@ -204,6 +210,8 @@ function launchGame()
     musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingIn);
 
     texts = new Texts();
+
+
 
     createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", update);

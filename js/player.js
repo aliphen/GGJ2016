@@ -93,6 +93,7 @@ function Player(img, path, callbacks) {
                     if (obj.state == "noticed" && Math.abs(this.sprite.x - obj.xPos) < 0.5) {
                         //interact with object
                         obj.state = "used"; //do not interact again
+                        createjs.Sound.play(foley1);
                         this.sprite.gotoAndPlay(obj.name);
                         this.stopFor(1000);
                         break;
