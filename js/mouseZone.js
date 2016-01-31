@@ -19,7 +19,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
     this.xEnd = x+w;
     this.xPos = x+w/2;
 
-    this.state = "inactive";
+    this.state = "frozen";
 
     var timer;
     var clickedDuration = 0;
@@ -102,7 +102,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
     };
 
     this.reset = function() {
-        this.state = "inactive";
+        this.state = "frozen";
         mask.visible = false;
         mask.alpha = 0;
         sprite.cursor = "pointer";

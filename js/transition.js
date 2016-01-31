@@ -32,6 +32,13 @@ function Transition() {
     musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingOut);
     createjs.Sound.play(rumble);
 
+    //disable all objects
+    for(i = 0; i < interactiveObjects.length; i++){
+        var obj = interactiveObjects[i];
+        obj.state = "frozen";
+    }
+
+
     this.update = function(event) {
         switch (transitionState) {
             case (TransitionStates.FadingToBlack):
@@ -73,6 +80,11 @@ function Transition() {
     };
 
     this.startGameAfterTransition = function() {
+        //enable all objects
+        for(i = 0; i < interactiveObjects.length; i++){
+            var obj = interactiveObjects[i];
+            obj.state = "inactive";
+        }
         gameStateTransition = false;
         player.startMoving();
     };

@@ -198,5 +198,10 @@ function Player(img, imgWakeUp, path, callbacks) {
     this.stopFor(4000, undefined, function(){
         wakeSprite.visible = false;
         self.sprite.visible = true;
+        //allow interactions
+        for(var i = 0; i < interactiveObjects.length; i++){
+            var obj = interactiveObjects[i];
+            obj.state = "inactive";
+        }
     });
 }
