@@ -5,6 +5,8 @@ var preloadTotal = 16;
 
 var stage;
 var player;
+var door;
+var doorIsOpen = false;
 var eltsToUpdate = [];
 var interactiveObjects = [];
 
@@ -34,6 +36,7 @@ var imgDecFrame;
 
 var imgShower;
 var imgWake;
+var imgDoor;
 // Images assets end
 
 // Sound assets
@@ -93,6 +96,7 @@ function preloadAssets()
     imgFinal =     loadImg("Decor-final.png");
     imgShower =    loadImg("shower.png");
     imgWake =      loadImg("wakeup.png");
+    imgDoor =      loadImg("door.png");
 
     // register foley
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement A.mp3", achievementA, 2);
@@ -209,6 +213,21 @@ function launchGame()
     createClickable(431, 198, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium", 3000);
     createClickable(985, 163, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   , 5000);
 
+    door = new createjs.Sprite(
+        new createjs.SpriteSheet({
+            images: [imgDoor],
+            frames: {height: 286, width: 150},
+            animations: {
+                opened: 3,
+                closed: 0,
+                opening: [1, 2, "opened", 0.1],
+                closing: [4, 5, "closed", 0.2]
+            }
+        }), "closed");
+    door.x = 1050;
+    door.y = 65;
+    stage.addChild(door);
+
     var shower = new createjs.Sprite(
         new createjs.SpriteSheet({
             images: [imgShower],
@@ -285,5 +304,17 @@ function update(event)
                 transition.remove();
                 transition = null;
             }
+    }
+
+    //open door
+    if(player.sprite.x > 1050 && !doorIsOpen)
+    {
+        door.gotoAndPlay("opening");
+        doorIsOpen = true;
+    }
+    if(player.sprite.x > 1210 && doorIsOpen)
+    {
+        door.gotoAndPlay("closing");
+        doorIsOpen = false;
     }
 }
