@@ -1,4 +1,4 @@
-function Player(img, path) {
+function Player(img, path, callbacks) {
     var visionRange = 75; // FoV
 
     this.speed = 0.1;
@@ -25,7 +25,9 @@ function Player(img, path) {
             photo: 11,
             window : 15,
             aquarium: 14,
-            phone: 12
+            phone: 12,
+            chair: 16,
+            shower: 17
         }
     });
 
@@ -98,6 +100,7 @@ function Player(img, path) {
                 }
             }
             else {
+                if(callbacks[ipath]) callbacks[ipath]();
                 ipath++;
 
                 if (ipath == path.length && transition == null){ // end of the path : trigger transition
@@ -117,12 +120,13 @@ function Player(img, path) {
     };
 
     var self = this;
-    this.stopFor = function(timeInMs, newdest)
+    this.stopFor = function(timeInMs, newdest, cb)
     {
         overridenDest = this.sprite.x;
         setTimeout(function(){
             overridenDest = newdest;
             self.sprite.gotoAndPlay("walk");
+            if(cb) cb();
         }, timeInMs)
     };
 

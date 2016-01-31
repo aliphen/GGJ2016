@@ -18,6 +18,7 @@ var imgPlayer;
 var imgBg;
 var imgDebug;
 var imgYeux;
+
 var imgFlower;
 var imgWindow;
 var imgPhone;
@@ -30,6 +31,8 @@ var imgDecWindow;
 var imgDecPhone;
 var imgDecAqua;
 var imgDecFrame;
+
+var imgShower;
 // Images assets end
 
 // Sound assets
@@ -71,6 +74,7 @@ function preloadAssets()
     imgDecAqua =   loadImg("decAqua.png");
     imgDecFrame =  loadImg("decFrame.png");
     imgFinal =     loadImg("Decor-final.png");
+    imgShower =     loadImg("shower.png");
 
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/Aloop.mp3", soundtrackLayer1);
@@ -170,7 +174,29 @@ function launchGame()
     createClickable(431, 198, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium");
     createClickable(985, 163, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   );
 
-    player = new Player(imgPlayer, [900, 60, 1250]);
+    var shower = new createjs.Sprite(
+        new createjs.SpriteSheet({
+            images: [imgShower],
+            frames: {height: 185, width: 100},
+            animations: {
+                on: [0, 2, "on", 0.5]
+            }
+        }), "on");
+    shower.x = 850;
+    shower.y = 100;
+    shower.visible = false;
+    stage.addChild(shower);
+    player = new Player(imgPlayer, [900, 60, 1250],[
+        function(){
+            player.sprite.gotoAndPlay("shower"); //disappear
+            shower.visible = true;
+            player.stopFor(2000, undefined, function(){shower.visible = false});
+        },
+        function(){
+            player.sprite.gotoAndPlay("chair");
+            player.stopFor(1500);
+        }
+    ]);
     player.start = true;
 
     musicHandler = new MusicHandler();
