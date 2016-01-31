@@ -123,6 +123,8 @@ function Player(img, imgWakeUp, path, callbacks) {
                             case ("window"):
                                 instance = createjs.Sound.play(windowSound);
                                 instance = 0.5;
+                                musicHandler.fadeMusic(soundtrackLayer5, MusicStates.FadingOut);
+                                musicHandler.fadeMusic(soundtrackLayer6, MusicStates.FadeToMax);
                                 break;
                             case ("photo"): createjs.Sound.play(photoSound); break;
                             case ("aquarium"): createjs.Sound.play(aquariumSound); break;

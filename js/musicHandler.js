@@ -4,6 +4,8 @@ function MusicHandler() {
     fadesInProgress.push([soundtrackLayer2, MusicStates.Neutral]);
     fadesInProgress.push([soundtrackLayer3, MusicStates.Neutral]);
     fadesInProgress.push([soundtrackLayer4, MusicStates.Neutral]);
+    fadesInProgress.push([soundtrackLayer5, MusicStates.Neutral]);
+    fadesInProgress.push([soundtrackLayer6, MusicStates.Neutral]);
     eltsToUpdate.push(this);
 
 
@@ -42,6 +44,12 @@ function MusicHandler() {
                         fadesInProgress[i] = [layerName, MusicStates.Neutral];
                     else
                         layer.volume -= 0.01;
+                    break;
+                case (MusicStates.FadeToMax):
+                    if (layer.volume >= 1)
+                        fadesInProgress[i] = [layerName, MusicStates.Neutral];
+                    else
+                    layer.volume += 0.01;
             }
         }
     }
@@ -51,5 +59,6 @@ var MusicStates = {
     FadingIn : 0,
     FadingOut : 1,
     Neutral : 2,
-    PartialFadeOut : 3
+    PartialFadeOut : 3,
+    FadeToMax : 4
 };
