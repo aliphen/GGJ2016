@@ -26,7 +26,7 @@ function EndGame() {
             musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingOut);
             musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingOut);
             rectangleToCoverScene = new createjs.Shape();
-            rectangleToCoverScene.graphics.beginFill("#000000").drawRect(0, 0, 1200, 700);
+            rectangleToCoverScene.graphics.beginFill("#212121").drawRect(0, 0, 1200, 700);
             rectangleToCoverScene.visible = true;
             rectangleToCoverScene.alpha = 0;
             stage.addChild(rectangleToCoverScene);

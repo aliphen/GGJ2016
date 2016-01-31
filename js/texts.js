@@ -19,7 +19,7 @@ function Texts() {
     texts["aquarium"][2] = "\"Why did I even buy an aquarium for? It's such a burden.\"";
 
     texts["phone"] = [];
-    texts["phone"][0] = "A message?\0\0\0\0\0\0\0\0\0   \"Greetings from your fortune teller!\0\0\0\0\0\0 Your fate today is to have a happy day\"\0\0\0\0\0\0\0\0\0   Haha! What a kind joke.";
+    texts["phone"][0] = "A message?\0\0\0\0\0\0\0\0\0   \"Greetings from your fortune teller!\0\0\0\0\0\0 Your fate today is to have a happy day!\"\0\0\0\0\0\0\0\0\0   Haha! What a kind joke.";
     texts["phone"][1] = "\"How lucky!\0\0\0\0\0\0 Once again,\0\0\0\0\0\0 your fate is to have a happy day!\"\0\0\0\0\0\0\0\0\0   I'm starting to think it's true!";
     texts["phone"][2] = "\"I never give my phone number to anyone. No wonder no one ever calls me.\"";
 
