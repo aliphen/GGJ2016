@@ -1,49 +1,161 @@
-<!DOCTYPE html>
-<html lang=fr>
- <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Ohayo</title>
-  <script type="text/javascript" src="js/lib/easeljs-0.8.2.min.js"></script>
-  <script type="text/javascript" src="js/lib/soundjs-0.6.2.min.js"></script>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document sans nom</title>
 
-  <script type="text/javascript" src="js/core.js"></script>
-  <script type="text/javascript" src="js/player.js"></script>
-  <script type="text/javascript" src="js/visualTimer.js"></script>
-  <script type="text/javascript" src="js/mouseZone.js"></script>
-  <script type="text/javascript" src="js/textBox.js"></script>
-  <script type="text/javascript" src="js/transition.js"></script>
-  <script type="text/javascript" src="js/musicHandler.js"></script>
-  <script type="text/javascript" src="js/texts.js"></script>
-  <script type="text/javascript" src="js/endGame.js"></script>
+<style>
 
-     <style>
-        @font-face {
-            font-family: ArchivoNarrow;
-            src:url(media/fonts/ArchivoNarrow-Regular.ttf)
-        }
-		
-		body {
-			background:#353535;
-			height:100%;
-			overflow:hidden;
-		}
-     </style>
+@font-face {
+    font-family: KaushanScript;
+    src:url(media/fonts/KaushanScript-Regular.ttf)
+}
 
- </head>
- <body onload="startGame();">
- <div  style="position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); width:1400px; background-color:#212121;">
- <center>
-  	<img src="media/Decor-02.png" style="filter:brightness(50%);">
-   <br>
-   <br>
-   <canvas id="gameCanvas" width="1200" height="351"></canvas>
-   <br/>
-   <br>
-  	<img src="media/Decor-02.png" style="filter:brightness(50%);">
-    </center>
-  </div>
+body {
+	padding:0px;	
+	margin:0px;
+	height:100%;
+	/*width:100%;*/
+	width:1000px;
+	
+	background-color:#EC2124;
+}
+
+
+.bgVideo{
+	position:fixed;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	background-color:#353535;
+}
+
+.menu{
+	background-color:#585858;
+	position:fixed;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	width:25%;
+	min-width:300px;
+	
+	/* Flex */
+	display:inline-block;
+}
+
+.title{
+	position:fixed;
+	top:0px;
+	bottom:0px;
+	right:0px;
+	width:75%;
+	min-width:400px;
+}
+
+.ohayo{
+	position:absolute;
+	top:50%;
+	left:50%;
+	font-size:200px;
+	transform:translate(-50%,-50%);
+	color:#FFFFFF;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  width:100%;
+  height:100%;
   
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction:column;
+  align-items:center;
   
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  background: tomato;
+  width: 100%;
+  height: 75%;
+  margin:10px;;
+  
+  /*font-size: 3em;*/
+  text-align: center;
+  position:relative;
+ 	color: white;
+	transition:all 0.25s;
+	font-size:80px;
+}
+
+.flex-item:hover{
+ 	color: black;
+  background: #FFFFFF;
+	font-size:100px;
+  height: 100%;
+  cursor:pointer;
+}
+
+.button{
+	font-family: 'KaushanScript', cursive;
+	position:absolute;
+	top:50%;
+	left:50%;
+ 	transform:translate(-50%,-50%);
+}
+
+.button2{
+	background:url(media/mainMenu/ggjlogo.png) no-repeat center center / contain, tomato;
+	filter:invert(0%);
+}
+
+.button2:hover {
+	background:url(media/mainMenu/ggjlogo.png) no-repeat center center / contain, #000;
+	filter:invert(100%);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div style="min-width:1000px"></div>
+
+<div class="bgVideo">
+	
+    
+    
+</div>
+
+<div class="menu">
+    
+    <div class="flex-container">	
+      <a class="flex-item" href="game.html">
+      	<div class="button">Play</div>
+      </a>
+      	
+      <a class="flex-item" href="http://globalgamejam.org/2016/games/ohayo">
+      	<div class="button">Credits
+        </div>
+      </a>
+      
+      <a class="flex-item button2" href="http://globalgamejam.org/2016/games/ohayo">
+        <div class="button"></div>
+      </a>
+    </div>
+    
+</div>
+
+<div class="title">
+    <div class="button ohayo">Ohayo</div>
+    
     <span style="position:absolute; right:15px; bottom:15px; color:#FFFFFF; font-family:Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace;">Global Game Jam 2016</span>
     <span style="position:absolute; right:15px; top:15px; color:#FFFFFF; font-family:Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace; text-align:right;">
     
@@ -52,5 +164,11 @@
             Antoine Iturbide<br/>
             Alexandre Olivier<br/>
             Raphaël Vandon</span>
- </body>
+
+</div>
+
+
+
+
+</body>
 </html>

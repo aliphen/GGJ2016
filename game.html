@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang=fr>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Ohayo</title>
+  <script type="text/javascript" src="js/lib/easeljs-0.8.2.min.js"></script>
+  <script type="text/javascript" src="js/lib/soundjs-0.6.2.min.js"></script>
+
+  <script type="text/javascript" src="js/core.js"></script>
+  <script type="text/javascript" src="js/player.js"></script>
+  <script type="text/javascript" src="js/visualTimer.js"></script>
+  <script type="text/javascript" src="js/mouseZone.js"></script>
+  <script type="text/javascript" src="js/textBox.js"></script>
+  <script type="text/javascript" src="js/transition.js"></script>
+  <script type="text/javascript" src="js/musicHandler.js"></script>
+  <script type="text/javascript" src="js/texts.js"></script>
+  <script type="text/javascript" src="js/endGame.js"></script>
+
+     <style>
+        @font-face {
+            font-family: ArchivoNarrow;
+            src:url(media/fonts/ArchivoNarrow-Regular.ttf)
+        }
+		
+		body {
+			background:#353535;
+			height:100%;
+			overflow:hidden;
+		}
+     </style>
+
+ </head>
+ <body onload="startGame();">
+ <div  style="position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); width:1400px; background-color:#212121;">
+ <center>
+  	<img src="media/Decor-02.png" style="filter:brightness(50%);">
+   <br>
+   <br>
+   <canvas id="gameCanvas" width="1200" height="351"></canvas>
+   <br/>
+   <br>
+  	<img src="media/Decor-02.png" style="filter:brightness(50%);">
+    </center>
+  </div>
+  
+  
+    <span style="position:absolute; right:15px; bottom:15px; color:#FFFFFF; font-family:Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace;">Global Game Jam 2016</span>
+    <span style="position:absolute; right:15px; top:15px; color:#FFFFFF; font-family:Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace; text-align:right;">
+    
+            Anis Chouk<br/>
+            Antoine Grelet<br/>
+            Antoine Iturbide<br/>
+            Alexandre Olivier<br/>
+            Raphaël Vandon</span>
+ </body>
+</html>
