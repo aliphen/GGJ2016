@@ -191,11 +191,11 @@ function launchGame()
         }
     });
 
-    createClickable(547, 184, spSheetFlower, spSheetYeux, imgDecFlower, "flower"  , 2500);
+    createClickable(547, 184, spSheetFlower, spSheetYeux, imgDecFlower, "flower"  , 3000);
     createClickable(61,  90,  spSheetFrame,  spSheetYeux, imgDecFrame,  "photo"   , 3500);
     createClickable(166, 79,  spSheetWindow, spSheetYeux, imgDecWindow, "window"  , 2500);
-    createClickable(431, 198, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium", 2500);
-    createClickable(985, 163, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   , 4500);
+    createClickable(431, 198, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium", 3000);
+    createClickable(985, 163, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   , 5000);
 
     var shower = new createjs.Sprite(
         new createjs.SpriteSheet({
