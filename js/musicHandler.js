@@ -36,6 +36,11 @@ function MusicHandler() {
                     else
                         layer.volume -= 0.01;
                     break;
+                case (MusicStates.PartialFadeOut):
+                    if (layer.volume <= 0.3)
+                        fadesInProgress[i] = [layerName, MusicStates.Neutral];
+                    else
+                        layer.volume -= 0.01;
             }
         }
     }
@@ -44,5 +49,6 @@ function MusicHandler() {
 var MusicStates = {
     FadingIn : 0,
     FadingOut : 1,
-    Neutral : 2
+    Neutral : 2,
+    PartialFadeOut : 3
 };
