@@ -21,12 +21,15 @@ function Texts() {
     texts["phone"] = [];
     texts["phone"][0] = "A message? \"Greetings from your fortune teller! Your fate today is to have a happy day\" Haha! What a kind joke.";
     texts["phone"][1] = "Another message? \"As usual, it's your fortune teller! How lucky you are! Once again, your fate is to have a happy day!\" I'm starting to think it's true!";
-    texts["phone"][2] = "\"I never gave my phone number to anyone. No wonder no one ever calls me.\"";
+    texts["phone"][2] = "\"I never give my phone number to anyone. No wonder no one ever calls me.\"";
 
     texts["photo"] = [];
-    texts["photo"][0] = "This picture... So many memories. It feels like I am smiling even though I'm not.";
-    texts["photo"][1] = "I love this photograph... Do I always look that happy?";
+    texts["photo"][0] = "So many memories... Even though I'm not, it feels like I am smiling in this picture now.";
+    texts["photo"][1] = "I love this photograph... Do I always look this happy?";
     texts["photo"][2] = "\"My bookshelf is so dusty. But I'm too lazy to clean it.\"";
+
+    texts["finalAdvice"] = [];
+    texts["finalAdvice"][2] = "\"What if one morning, I tried to make everything better here ?\"";
 
     texts["chitchat"] = [];
     texts["chitchat"][0] = "Why do I keep living this kind of life?";

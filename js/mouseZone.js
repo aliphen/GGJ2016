@@ -18,7 +18,6 @@ function MouseZone(sprite, yeux, mask, name){
     this.xEnd = x+w;
     this.xPos = x+w/2;
 
-
     this.state = "inactive";
 
     var timer;

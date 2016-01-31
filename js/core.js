@@ -48,7 +48,7 @@ var foley1 = "foley1"; // TODO use obj.name to play(obj.name)
 
 var texts;
 
-var objectsToDiscover = ["window", "flower", "aquarium", "phone", "photo"]; // used to provide advice on black screen, never reset
+var objectsToDiscover = ["window", "flower", "aquarium", "phone", "photo", "finalAdvice"]; // used to provide advice on black screen, never reset
 
 function startGame()
 {
