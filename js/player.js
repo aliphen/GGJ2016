@@ -164,7 +164,7 @@ function Player(img, imgWakeUp, path, callbacks) {
         this.sprite.visible = false;
         wakeSprite.visible = true;
         wakeSprite.gotoAndPlay("wake");
-        this.stopFor(3000, undefined, function(){
+        this.stopFor(4000, undefined, function(){
             wakeSprite.visible = false;
             self.sprite.visible = true;
         });
