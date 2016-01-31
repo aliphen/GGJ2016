@@ -51,6 +51,10 @@ var achievementE = "achievementE";
 var rumble = "rumble";
 var plantGrowSound = "plantGrowSound";
 var aquariumSound = "aquariumSound";
+var windowSound = "windowSound";
+var phoneSound = "phoneSound";
+var photoSound = "photoSound";
+var winSound = "winSound";
 // Sound assets end
 
 var texts;
@@ -97,6 +101,11 @@ function preloadAssets()
     createjs.Sound.registerSound("media/music/Ohayo - SD - Rumble A.mp3", rumble, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Plant Growing.mp3", plantGrowSound, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Aquarium.mp3", aquariumSound, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Blinds C.mp3", windowSound, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Telephone End A.mp3", phoneSound, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Blow B.mp3", photoSound, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Win B.mp3", winSound, 2);
+
 
     // register music (after foley to avoid triggering the soundtrack load event
     createjs.Sound.addEventListener("fileload", playMusicLayers);

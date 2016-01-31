@@ -8,6 +8,8 @@ function EndGame() {
     var countdownToBlack = 150;
     var rectangleToCoverScene;
 
+    createjs.Sound.play(winSound);
+
     this.update = function(event) {
         if (this.finalBackGround.alpha < 1) {
             this.finalBackGround.alpha += 0.005;
