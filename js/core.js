@@ -62,6 +62,8 @@ var phoneSound = "phoneSound";
 var photoSound = "photoSound";
 var winSound = "winSound";
 var stepSoundInstance;
+var rainSoundInstance;
+var sunSoundInstance;
 // Sound assets end
 
 var texts;
@@ -119,7 +121,12 @@ function preloadAssets()
     createjs.Sound.registerSound("media/music/Ohayo - SD - Step.mp3", "stepSound", 2);
     stepSoundInstance = createjs.Sound.play("stepSound", {loop:-1});
     stepSoundInstance.volume = 0;
-
+    //createjs.Sound.registerSound("media/music/Ohayo - SD - Rain.mp3", "rainSound", 2);
+    //rainSoundInstance = createjs.Sound.play("stepSound", {loop:-1});
+    //rainSoundInstance.volume = 0;
+    //createjs.Sound.registerSound("media/music/Ohayo - SD - Sun.mp3", "sunSound", 2);
+    //sunSoundInstance = createjs.Sound.play("stepSound", {loop:-1});
+    //sunSoundInstance.volume = 0;
 
     // register music (after foley to avoid triggering the soundtrack load event
     createjs.Sound.addEventListener("fileload", playMusicLayers);
@@ -277,7 +284,7 @@ function launchGame()
 
     musicHandler = new MusicHandler();
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
-    musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingIn);
+    //musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingIn);
     musicHandler.fadeMusic(soundtrackLayer4, MusicStates.FadingIn);
 
     texts = new Texts();

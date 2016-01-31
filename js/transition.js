@@ -13,7 +13,7 @@ function Transition() {
     rectangleToCoverScene.alpha = 0;
     stage.addChild(rectangleToCoverScene);
 
-    // find the first appliable advice to display
+    // find the first applicable advice to display
     var adviceText = "";
     for (var i = 0; i < objectsToDiscover.length; i++) {
         if (objectsToDiscover[i] != "") { // not discovered yet
@@ -28,8 +28,9 @@ function Transition() {
     textOnTransition.alpha = 0;
     stage.addChild(textOnTransition);
 
+    musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingOut);
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.PartialFadeOut);
-    musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingOut);
+    musicHandler.fadeMusic(soundtrackLayer3, MusicStates.PartialFadeOut);
     musicHandler.fadeMusic(soundtrackLayer4, MusicStates.FadingOut);
     createjs.Sound.play(rumble);
 
@@ -53,7 +54,7 @@ function Transition() {
                     timeInPauseCounter--;
                 else {
                     transitionState = TransitionStates.FadingToGame;
-                    musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
+                    musicHandler.fadeMusic(soundtrackLayer2, MusicStates.FadingIn);
                     musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingIn);
                     musicHandler.fadeMusic(soundtrackLayer4, MusicStates.FadingIn);
                 }
