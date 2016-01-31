@@ -223,7 +223,12 @@ function launchGame()
     });
 
     createClickable(547, 184, spSheetFlower, spSheetYeux, imgDecFlower, "flower"  , 3000);
-    createClickable(61,  90,  spSheetFrame,  spSheetYeux, imgDecFrame,  "photo"   , 3500);
+    createClickable(61,  90,  spSheetFrame,  spSheetYeux, imgDecFrame,  "photo"   , 3500,
+        function(sp){
+            var hit = new createjs.Shape();
+            hit.graphics.beginFill("#000").drawRect(0, 0, 30, 25); //x and y relative to the object
+            sp.hitArea = hit;
+        });
     createClickable(166, 79,  spSheetWindow, spSheetYeux, imgDecWindow, "window"  , 2500);
     createClickable(431, 198, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium", 3000);
     createClickable(985, 163, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   , 5000);
@@ -293,7 +298,7 @@ function launchGame()
 	createjs.Ticker.addEventListener("tick", update);
 }
 
-function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name, stareTimeInMs)
+function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name, stareTimeInMs, special)
 {
     var spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
     spriteYeux.regX = 75 / 2;
@@ -303,6 +308,7 @@ function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name, stareTime
     var sprite = new createjs.Sprite(spSheetObj, "still");
     sprite.x = x;
     sprite.y = y;
+    if(special) special(sprite);
     interactiveObjects.push(new MouseZone(sprite, spriteYeux, spriteMask, name, stareTimeInMs));
 }
 
