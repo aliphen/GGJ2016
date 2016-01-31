@@ -158,7 +158,7 @@ function launchGame()
 
     var spSheetYeux = new createjs.SpriteSheet({
         images: [imgYeux],
-        frames: {height: 46, width: 75},
+        frames: {height: 60, width: 75},
         animations: {closed: 0, open: 1}
     });
     var spSheetFlower = new createjs.SpriteSheet({
@@ -274,7 +274,7 @@ function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name, stareTime
 {
     var spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
     spriteYeux.regX = 75 / 2;
-    spriteYeux.regY = 46;
+    spriteYeux.regY = 60;
     var spriteMask = new createjs.Bitmap(imgMask);
     spriteMask.y = 45;
     var sprite = new createjs.Sprite(spSheetObj, "still");
