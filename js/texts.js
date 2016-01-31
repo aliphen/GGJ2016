@@ -4,7 +4,7 @@ function Texts() {
     var texts = [];
 
     texts["window"] = [];
-    texts["window"][0] = "I'm ok with rain if it creates such a rainbow.";
+    texts["window"][0] = "I'm ok with a little rain if it creates such a great rainbow.";
     texts["window"][1] = "An everlasting rainbow is the best!";
     texts["window"][2] = "\"I don't even want to watch outside, I know it's still raining today.\"";
 
