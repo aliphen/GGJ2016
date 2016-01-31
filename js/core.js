@@ -33,6 +33,7 @@ var imgDecAqua;
 var imgDecFrame;
 
 var imgShower;
+//bed 154*249
 // Images assets end
 
 // Sound assets
@@ -183,22 +184,23 @@ function launchGame()
     var shower = new createjs.Sprite(
         new createjs.SpriteSheet({
             images: [imgShower],
-            frames: {height: 185, width: 100},
+            frames: {height: 96, width: 100},
             animations: {
                 on: [0, 2, "on", 0.5]
             }
         }), "on");
-    shower.x = 850;
-    shower.y = 100;
+    shower.x = 838;
+    shower.y = 57;
     shower.visible = false;
     stage.addChild(shower);
-    player = new Player(imgPlayer, [900, 60, 1250],[
+    player = new Player(imgPlayer, [900, 75, 1250],[ //31
         function(){
             player.sprite.gotoAndPlay("shower"); //disappear
             shower.visible = true;
             player.stopFor(2000, undefined, function(){shower.visible = false});
         },
         function(){
+            player.sprite.scaleX = 1;
             player.sprite.gotoAndPlay("chair");
             player.stopFor(1500);
         }
