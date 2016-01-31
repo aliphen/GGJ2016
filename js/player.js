@@ -9,7 +9,7 @@ function Player(img, path) {
     var overridenDest = undefined;
 
     var debug = new createjs.Bitmap(imgDebug);
-    debug.scaleY = 306;
+    debug.scaleY = 350;
     debug.visible = false;
     stage.addChild(debug);
 
@@ -25,7 +25,7 @@ function Player(img, path) {
     });
 
     this.sprite = new createjs.Sprite(spSheet, "walk");
-    this.sprite.y = 51;
+    this.sprite.y = 96;
     this.sprite.x = 400;
 
     // insert before fading screen

@@ -110,7 +110,7 @@ function launchGame()
 
     var spSheetYeux = new createjs.SpriteSheet({
         images: [imgYeux],
-        frames: {height: 100, width: 100},
+        frames: {height: 46, width: 75},
         animations: {closed: 0, open: 1}
     });
     var spSheetFlower = new createjs.SpriteSheet({
@@ -164,11 +164,11 @@ function launchGame()
         }
     });
 
-    createClickable(550,  149, spSheetFlower, spSheetYeux, imgDecFlower, "flower"  );
-    createClickable(60,   45,  spSheetFrame,  spSheetYeux, imgDecFrame,  "photo"   );
-    createClickable(170,  35,  spSheetWindow, spSheetYeux, imgDecWindow, "window"  );
-    createClickable(430,  163, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium");
-    createClickable(1000, 120, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   );
+    createClickable(547, 184, spSheetFlower, spSheetYeux, imgDecFlower, "flower"  );
+    createClickable(61,  90,  spSheetFrame,  spSheetYeux, imgDecFrame,  "photo"   );
+    createClickable(166, 79,  spSheetWindow, spSheetYeux, imgDecWindow, "window"  );
+    createClickable(431, 198, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium");
+    createClickable(985, 163, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   );
 
     player = new Player(imgPlayer, [900, 60, 1250]);
     player.start = true;
@@ -186,9 +186,10 @@ function launchGame()
 function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name)
 {
     var spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
-    spriteYeux.regX = 50;
-    spriteYeux.regY = 100;
+    spriteYeux.regX = 75 / 2;
+    spriteYeux.regY = 46;
     var spriteMask = new createjs.Bitmap(imgMask);
+    spriteMask.y = 45;
     var sprite = new createjs.Sprite(spSheetObj, "still");
     sprite.x = x;
     sprite.y = y;
