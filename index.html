@@ -21,13 +21,24 @@
             font-family: ArchivoNarrow;
             src:url(media/fonts/ArchivoNarrow-Regular.ttf)
         }
+		
+		body {
+			background:#353535;
+			height:100%;
+			overflow:hidden;
+		}
      </style>
 
  </head>
  <body onload="startGame();">
-  <center>
+ <div  style="position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);">
+  	<img src="media/Decor-01.png" style="filter:brightness(50%);">
+   <br>
    <br>
    <canvas id="gameCanvas" width="1200" height="351"></canvas>
-  </center>
+   <br/>
+   <br>
+  	<img src="media/Decor-01.png" style="filter:brightness(50%);">
+  </div>
  </body>
 </html>
