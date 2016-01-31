@@ -102,7 +102,6 @@ function MouseZone(sprite, yeux, mask, name){
         sprite.cursor = "pointer";
         sprite.gotoAndPlay("still");
         yeux.visible = false;
-        if (timer != null)
-            timer.remove();
-    };
+        if(timer) timer.remove();
+    }
 }
