@@ -44,9 +44,9 @@ function Transition() {
     };
 
     this.resetRoom = function() {
-        // whatever is required during the fade to black to reset the game.
         // TODO play interlude sound
         player.reset();
+
 
     };
 

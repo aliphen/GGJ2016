@@ -94,4 +94,12 @@ function MouseZone(sprite, yeux, mask, name){
         sprite.cursor = null;
         timer.remove();
     }
+
+    this.reset = function() {
+        this.state = "inactive";
+        mask.visible = false;
+        mask.alpha = 0;
+        sprite.cursor = "pointer";
+        sprite.gotoAndPlay("still");
+    }
 }

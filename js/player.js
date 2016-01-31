@@ -67,11 +67,9 @@ function Player(img, path) {
             debug.scaleX = detectionMax - detectionMin;
 
             //check detection range
-            for(var i = 0; i < interactiveObjects.length; i ++)
-            {
+            for(var i = 0; i < interactiveObjects.length; i ++) {
                 var obj = interactiveObjects[i];
-                if(obj.state == "active" && detectionMin < obj.xEnd && detectionMax > obj.xBegin)
-                {
+                if(obj.state == "active" && detectionMin < obj.xEnd && detectionMax > obj.xBegin) {
                     obj.detect();
                     this.foundItemsCounter++;
                     texts.displayTextForObject(obj.name);
@@ -135,6 +133,10 @@ function Player(img, path) {
         overridenDest = undefined;
         this.sprite.x = 400;
         this.foundItemsCounter = 0;
+        for(var i = 0; i < interactiveObjects.length; i ++) {
+            var obj = interactiveObjects[i];
+            obj.reset();
+        }
     };
 
     this.startMoving = function() {
