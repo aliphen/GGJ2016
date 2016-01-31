@@ -21,7 +21,7 @@ function Transition() {
             break;
         }
     }
-    var textOnTransition = new createjs.Text(adviceText, "20px Segoe", "#ffffff");
+    var textOnTransition = new createjs.Text(adviceText, "20px Sans serif", "#ffffff");
     textOnTransition.x = 20;
     textOnTransition.y = 150;
     textOnTransition.visible = true;

@@ -11,7 +11,7 @@ function TextBox(textToDisplay) {
     this.textBoxSupport.alpha = 0;
     stage.addChild(this.textBoxSupport);
 
-    this.currentTextBox = new createjs.Text("", "20px Monospace", "#dddddd");
+    this.currentTextBox = new createjs.Text("", "20px Sans serif", "#dddddd");
     this.currentTextBox.x = 20;
     this.currentTextBox.y = 20;
     this.currentTextBox.visible = true;

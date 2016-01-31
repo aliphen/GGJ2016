@@ -93,6 +93,7 @@ function preloadAssets()
     imgShower =    loadImg("shower.png");
     imgWake =      loadImg("wakeup.png");
 
+    // register foley
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement A.mp3", achievementA, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement B.mp3", achievementB, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement C.mp3", achievementC, 2);
