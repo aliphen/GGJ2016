@@ -212,14 +212,14 @@ function launchGame()
             images: [imgShower],
             frames: {height: 96, width: 100},
             animations: {
-                on: [0, 2, "on", 0.5]
+                on: [0, 2, "on", 0.3]
             }
         }), "on");
     shower.x = 838;
     shower.y = 57;
     shower.visible = false;
     stage.addChild(shower);
-    player = new Player(imgPlayer, imgWake, [900, 75, 1250],[ //31
+    player = new Player(imgPlayer, imgWake, [880, 75, 1250],[ //31
         function(){
             player.sprite.gotoAndPlay("shower"); //disappear
             shower.visible = true;
