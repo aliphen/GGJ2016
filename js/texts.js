@@ -29,7 +29,7 @@ function Texts() {
     texts["photo"][2] = "\"My bookshelf is so dusty. But I'm too lazy to clean it.\"";
 
     texts["finalAdvice"] = [];
-    texts["finalAdvice"][2] = "\"What if one morning, I tried to make everything better here ?\"";
+    texts["finalAdvice"][2] = "\"What if one morning, I tried to make everything ?\"";
 
     texts["chitchat"] = [];
     texts["chitchat"][0] = "Why do I keep living this kind of life?";
