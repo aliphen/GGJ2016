@@ -20,7 +20,7 @@ function Texts() {
 
     texts["phone"] = [];
     texts["phone"][0] = "A message? \"Greetings from your fortune teller! Your fate today is to have a happy day\" Haha! What a kind joke.";
-    texts["phone"][1] = "Another message? \"As usual, it's your fortune teller! How lucky you are! Once again, your fate is to have a happy day!\" I'm starting to think it's true!";
+    texts["phone"][1] = "Another message? \"How lucky! Once again, your fate is to have a happy day!\" I'm starting to think it's true!";
     texts["phone"][2] = "\"I never give my phone number to anyone. No wonder no one ever calls me.\"";
 
     texts["photo"] = [];
