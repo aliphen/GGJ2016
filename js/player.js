@@ -3,6 +3,7 @@ function Player(img, path) {
 
     this.speed = 0.1;
     this.start = false;
+    this.foundItemsCounter = 0;
 
     var ipath = 0;
     var overridenDest = undefined;
@@ -72,6 +73,7 @@ function Player(img, path) {
                 if(obj.state == "active" && detectionMin < obj.xEnd && detectionMax > obj.xBegin)
                 {
                     obj.detect();
+                    this.foundItemsCounter++;
                     texts.displayTextForObject(obj.name);
                     this.sprite.gotoAndPlay("surprise");
                     this.stopFor(1000, obj.xPos);
@@ -98,7 +100,15 @@ function Player(img, path) {
                 if (ipath == path.length && transition == null){ // end of the path : trigger transition
                     this.sprite.gotoAndPlay("still");
                     overridenDest = this.sprite.x; //prevent movement
-                    transition = new Transition();
+
+                    if (this.foundItemsCounter == 5) { // end of the game ! Trigger reward instead of transition
+                        gameHasEnded = true;
+                        texts.removeTextBox();
+                        final = new EndGame();
+                    }
+                    else {
+                        transition = new Transition();
+                    }
                 }
             }
         }
@@ -124,6 +134,7 @@ function Player(img, path) {
         ipath = 0;
         overridenDest = undefined;
         this.sprite.x = 400;
+        this.foundItemsCounter = 0;
     };
 
     this.startMoving = function() {

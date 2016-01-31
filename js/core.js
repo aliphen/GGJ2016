@@ -8,7 +8,10 @@ var player;
 var eltsToUpdate = [];
 var interactiveObjects = [];
 
+// states
 var transition;
+var final;
+var gameHasEnded = false;
 
 // Images assets
 var imgPlayer;
@@ -19,6 +22,7 @@ var imgFlower;
 var imgWindow;
 var imgPhone;
 var imgAqua;
+var imgFinal;
 
 var imgDecFlower;
 var imgDecWindow;
@@ -64,6 +68,7 @@ function preloadAssets()
     imgDecPhone =  loadImg("decPhone.png");
     imgDecAqua =   loadImg("decAqua.png");
     imgDecFrame =  loadImg("decFrame.png");
+    imgFinal =     loadImg("Decor-final.png");
 
     createjs.Sound.addEventListener("fileload", playMusicLayers);
     createjs.Sound.registerSound("media/music/Aloop.mp3", soundtrackLayer1);
@@ -180,14 +185,17 @@ function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name)
 function update(event)
 {
 	stage.update(event);
-    for(var i = 0; i < eltsToUpdate.length; i++)
-        eltsToUpdate[i].update(event);
+    if (gameHasEnded) // endgame screen hijacks everything else
+        final.update(event);
+    else {
+        for(var i = 0; i < eltsToUpdate.length; i++)
+            eltsToUpdate[i].update(event);
 
-    if (gameStateTransition == true)
-        transition.update(event);
-    if (gameStateTransition == false && transition != null)
-    {
-        transition.remove();
-        transition = null;
+            if (gameStateTransition == true)
+                transition.update(event);
+            if (gameStateTransition == false && transition != null) {
+                transition.remove();
+                transition = null;
+            }
     }
 }

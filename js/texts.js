@@ -69,6 +69,10 @@ function Texts() {
             currentTextBox.remove();
         currentTextBox = new TextBox(textToDisplay);
     }
+
+    this.removeTextBox = function() {
+        currentTextBox.remove();
+    }
 }
 
 
