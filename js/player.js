@@ -20,7 +20,12 @@ function Player(img, path) {
             still: 0,
             walk: [1, 8, "walk", 2.25*this.speed],
             surprise: [9, 10, "still", 0.1],
-            inspect: 11
+            inspect: 11,
+            flower: 13,
+            photo: 11,
+            window : 15,
+            aquarium: 14,
+            phone: 12
         }
     });
 
@@ -86,7 +91,7 @@ function Player(img, path) {
                     if (obj.state == "noticed" && Math.abs(this.sprite.x - obj.xPos) < 0.5) {
                         //interact with object
                         obj.state = "used"; //do not interact again
-                        this.sprite.gotoAndPlay("inspect");
+                        this.sprite.gotoAndPlay(obj.name);
                         this.stopFor(1000);
                         break;
                     }
