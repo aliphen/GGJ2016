@@ -9,8 +9,8 @@ function Texts() {
     texts["window"][2] = "I don't even want to watch outside, I know it's still raining today.";
 
     texts["flower"] = [];
-    texts["flower"][0] = "I thought that flower had already faded. It looks nice and pretty.";
-    texts["flower"][1] = "This one is pretty as usual.";
+    texts["flower"][0] = "I thought that flower had already faded. It looks nice and colorful.";
+    texts["flower"][1] = "As pretty as ever.";
     texts["flower"][2] = "I wish I had taken care of my flower. It used to give color to this room.";
 
     texts["aquarium"] = [];
@@ -24,8 +24,8 @@ function Texts() {
     texts["phone"][2] = "I never gave my phone number to anyone. No wonder no one ever calls me.";
 
     texts["photo"] = [];
-    texts["photo"][0] = "This picture... So many memories. I'm not even smiling, but now it feels like I am.";
-    texts["photo"][1] = "What a photo... Do I always look that happy?";
+    texts["photo"][0] = "This picture... So many memories. It feels like I am smiling even though I'm not.";
+    texts["photo"][1] = "I love this photograph... Do I always look that happy?";
     texts["photo"][2] = "My shelf is so dusty. But I'm too lazy to clean it.";
 
     texts["chitchat"] = [];
@@ -34,8 +34,6 @@ function Texts() {
     texts["chitchat"][2] = "I feel like today was... better, I guess.";
     texts["chitchat"][3] = "Today was a fun day.";
     texts["chitchat"][4] = "I could keep living like that forever.";
-
-    // TODO : implement | as a line separator.
 
     var alreadyDisplayed = [];
     alreadyDisplayed["window"] = -1;

@@ -84,7 +84,7 @@ function MouseZone(sprite, yeux, mask, name){
                 mask.alpha = mask.alpha + 0.01;
             }
         }
-    }
+    };
 
     this.detect = function(){
         this.state = "noticed";
@@ -93,7 +93,7 @@ function MouseZone(sprite, yeux, mask, name){
         mask.alpha = 0;
         sprite.cursor = null;
         timer.remove();
-    }
+    };
 
     this.reset = function() {
         this.state = "inactive";
@@ -102,6 +102,7 @@ function MouseZone(sprite, yeux, mask, name){
         sprite.cursor = "pointer";
         sprite.gotoAndPlay("still");
         yeux.visible = false;
-        timer.remove();
-    }
+        if (timer != null)
+            timer.remove();
+    };
 }
