@@ -48,6 +48,9 @@ var achievementB = "achievementB";
 var achievementC = "achievementC";
 var achievementD = "achievementD";
 var achievementE = "achievementE";
+var rumble = "rumble";
+var plantGrowSound = "plantGrowSound";
+var aquariumSound = "aquariumSound";
 // Sound assets end
 
 var texts;
@@ -86,12 +89,14 @@ function preloadAssets()
     imgShower =    loadImg("shower.png");
     imgWake =      loadImg("wakeup.png");
 
-
-    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement A.mp3", "achievementA", 2);
-    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement B.mp3", "achievementB", 2);
-    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement C.mp3", "achievementC", 2);
-    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement D.mp3", "achievementD", 2);
-    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement E.mp3", "achievementE", 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement A.mp3", achievementA, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement B.mp3", achievementB, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement C.mp3", achievementC, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement D.mp3", achievementD, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement E.mp3", achievementE, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Rumble A.mp3", rumble, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Plant Growing.mp3", plantGrowSound, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Aquarium.mp3", aquariumSound, 2);
 
     // register music (after foley to avoid triggering the soundtrack load event
     createjs.Sound.addEventListener("fileload", playMusicLayers);

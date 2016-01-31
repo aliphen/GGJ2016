@@ -118,6 +118,17 @@ function Player(img, imgWakeUp, path, callbacks) {
                     if (obj.state == "noticed" && Math.abs(this.sprite.x - obj.xPos) < 0.5) {
                         //interact with object
                         obj.state = "used"; //do not interact again
+                        switch (obj.name) {
+                            case ("window"): break; //createjs.Sound.play(achievementA); break;
+                            case ("photo"): break; //createjs.Sound.play(achievementB); break;
+                            case ("aquarium"): createjs.Sound.play(aquariumSound); break;
+                            case ("flower"):
+                                var instance = createjs.Sound.play(plantGrowSound);
+                                instance.volume = 0.5;
+                                break;
+                            case ("phone"): break; //createjs.Sound.play(achievementE); break;
+                            default: break;
+                        }
                         this.sprite.gotoAndPlay(obj.name);
                         this.stopFor(obj.stareTimeInMs);
                         break;

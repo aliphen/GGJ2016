@@ -30,6 +30,7 @@ function Transition() {
 
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.PartialFadeOut);
     musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingOut);
+    createjs.Sound.play(rumble);
 
     this.update = function(event) {
         switch (transitionState) {
