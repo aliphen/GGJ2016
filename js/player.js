@@ -1,4 +1,5 @@
-function Player(img, path, callbacks) {
+function Player(img, imgWakeUp, path, callbacks) {
+    var self = this;
     var visionRange = 75; // FoV
 
     this.speed = 0.1;
@@ -30,17 +31,32 @@ function Player(img, path, callbacks) {
             shower: 17
         }
     });
+    var spSheetWake = new createjs.SpriteSheet({
+        images: [imgWakeUp],
+        frames: {height: 237, width: 275},
+        animations: {
+            asleep: 0,
+            wake: [0, 2, "awaken", 0.03],
+            awaken: 2
+        }
+    });
+    var wakeSprite = new createjs.Sprite(spSheetWake, "wake");
+    wakeSprite.x = 154;
+    wakeSprite.y = 113;
+
 
     this.sprite = new createjs.Sprite(spSheet, "walk");
     this.sprite.y = 96;
     this.sprite.x = 400;
+    this.sprite.visible = false;
+    stage.addChild(this.sprite);
 
     // insert before fading screen
     if (rectangleToCoverScene == null)
-        stage.addChild(this.sprite);
+        stage.addChild(wakeSprite);
     else {
         var index = stage.getChildIndex(rectangleToCoverScene);
-        stage.addChildAt(this.sprite, index - 1);
+        stage.addChildAt(wakeSprite, index - 1);
     }
     eltsToUpdate.push(this);
 
@@ -120,7 +136,6 @@ function Player(img, path, callbacks) {
         }
     };
 
-    var self = this;
     this.stopFor = function(timeInMs, newdest, cb)
     {
         overridenDest = this.sprite.x;
@@ -146,10 +161,23 @@ function Player(img, path, callbacks) {
             var obj = interactiveObjects[i];
             obj.reset();
         }
+        this.sprite.visible = false;
+        wakeSprite.visible = true;
+        wakeSprite.gotoAndPlay("wake");
+        this.stopFor(3000, undefined, function(){
+            wakeSprite.visible = false;
+            self.sprite.visible = true;
+        });
     };
 
     this.startMoving = function() {
         this.start = true;
         self.sprite.gotoAndPlay("walk");
     }
+
+    //start stopped to show wake anim
+    this.stopFor(4000, undefined, function(){
+        wakeSprite.visible = false;
+        self.sprite.visible = true;
+    });
 }

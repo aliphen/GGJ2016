@@ -1,7 +1,7 @@
 displayDebug = false;
 
 var preloadCount = 0;
-var preloadTotal = 15;
+var preloadTotal = 16;
 
 var stage;
 var player;
@@ -33,7 +33,7 @@ var imgDecAqua;
 var imgDecFrame;
 
 var imgShower;
-//bed 154*249
+var imgWake;
 // Images assets end
 
 // Sound assets
@@ -79,7 +79,8 @@ function preloadAssets()
     imgDecAqua =   loadImg("decAqua.png");
     imgDecFrame =  loadImg("decFrame.png");
     imgFinal =     loadImg("Decor-final.png");
-    imgShower =     loadImg("shower.png");
+    imgShower =    loadImg("shower.png");
+    imgWake =      loadImg("wakeup.png");
 
 
     createjs.Sound.registerSound("media/music/foley1.mp3", foley1, 2);
@@ -195,7 +196,7 @@ function launchGame()
     shower.y = 57;
     shower.visible = false;
     stage.addChild(shower);
-    player = new Player(imgPlayer, [900, 75, 1250],[ //31
+    player = new Player(imgPlayer, imgWake, [900, 75, 1250],[ //31
         function(){
             player.sprite.gotoAndPlay("shower"); //disappear
             shower.visible = true;
