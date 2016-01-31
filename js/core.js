@@ -239,13 +239,14 @@ function launchGame()
     halo = new createjs.Sprite(
         new createjs.SpriteSheet({
             images: [imgHalo],
-            frames: {height: 120, width: 120},
+            frames: {height: 122, width: 122},
             animations: {
-                spin: [0, 2, "spin", 0.2]
+                spin: [0, 8, "spin", 0.2]
             }
         }), "spin");
     halo.x = 505;
     halo.y = 170;
+    halo.alpha = 0.5;
     stage.addChild(halo);
 
     var shower = new createjs.Sprite(
