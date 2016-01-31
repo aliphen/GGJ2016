@@ -73,8 +73,8 @@ var objectsToDiscover = ["window", "flower", "aquarium", "phone", "photo", "fina
 function startGame()
 {
 	stage = new createjs.Stage(document.getElementById("gameCanvas"));
-	var text = new createjs.Text("Loading...");
-	text.x = 600; text.y = 300;
+	var text = new createjs.Text("Loading...", "Arial", "white");
+	text.x = 600; text.y = 170;
 	text.textAlign = "center"; text.textBaseline = "middle";
 	stage.addChild(text);
 	stage.update();
