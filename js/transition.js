@@ -11,8 +11,7 @@ function Transition() {
     rectangleToCoverScene.alpha = 0;
     stage.addChild(rectangleToCoverScene);
 
-    musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingOut);
-    musicHandler.fadeMusic(soundtrackLayer2, MusicStates.FadingOut);
+    // Loop 1 never stops
     musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingOut);
 
     this.update = function(event) {
@@ -30,7 +29,7 @@ function Transition() {
                     timeInPauseCounter--;
                 else {
                     transitionState = TransitionStates.FadingToGame;
-                    musicHandler.fadeMusic(soundtrackLayer2, MusicStates.FadingIn);
+                    musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingIn);
                 }
                 break;
             case (TransitionStates.FadingToGame):

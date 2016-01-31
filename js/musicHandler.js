@@ -2,6 +2,7 @@ function MusicHandler() {
     var fadesInProgress = [];
     fadesInProgress.push([soundtrackLayer1, MusicStates.Neutral]);
     fadesInProgress.push([soundtrackLayer2, MusicStates.Neutral]);
+    fadesInProgress.push([soundtrackLayer3, MusicStates.Neutral]);
     eltsToUpdate.push(this);
 
 

@@ -162,7 +162,8 @@ function launchGame()
     player.start = true;
 
     musicHandler = new MusicHandler();
-    musicHandler.fadeMusic(soundtrackLayer2, MusicStates.FadingIn);
+    musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
+    musicHandler.fadeMusic(soundtrackLayer3, MusicStates.FadingIn);
 
     texts = new Texts();
 
