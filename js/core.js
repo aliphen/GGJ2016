@@ -1,7 +1,7 @@
 displayDebug = false;
 
 var preloadCount = 0;
-var preloadTotal = 5;
+var preloadTotal = 14;
 
 var stage;
 var player;
