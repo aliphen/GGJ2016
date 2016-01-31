@@ -6,6 +6,7 @@ var preloadTotal = 16;
 var stage;
 var player;
 var door;
+var halo;
 var doorIsOpen = false;
 var eltsToUpdate = [];
 var interactiveObjects = [];
@@ -37,6 +38,7 @@ var imgDecFrame;
 var imgShower;
 var imgWake;
 var imgDoor;
+var imgHalo;
 // Images assets end
 
 // Sound assets
@@ -98,6 +100,7 @@ function preloadAssets()
     imgShower =    loadImg("shower.png");
     imgWake =      loadImg("wakeup.png");
     imgDoor =      loadImg("door.png");
+    imgHalo =      loadImg("halo.png");
 
     // register foley
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Achievement A.mp3", achievementA, 2);
@@ -232,6 +235,18 @@ function launchGame()
     door.x = 1050;
     door.y = 65;
     stage.addChild(door);
+
+    halo = new createjs.Sprite(
+        new createjs.SpriteSheet({
+            images: [imgHalo],
+            frames: {height: 120, width: 120},
+            animations: {
+                spin: [0, 2, "spin", 0.2]
+            }
+        }), "spin");
+    halo.x = 505;
+    halo.y = 170;
+    stage.addChild(halo);
 
     var shower = new createjs.Sprite(
         new createjs.SpriteSheet({

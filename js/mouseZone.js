@@ -38,6 +38,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
             timer = new VisualTimer(clickTimeInSec, x + w/2, y + h/2, incrementalTimer);
             self.state = "clicked";
             this.gotoAndPlay("click");
+            halo.visible = false;
         }
     });
 
