@@ -274,7 +274,7 @@ function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name, stareTime
 {
     var spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
     spriteYeux.regX = 75 / 2;
-    spriteYeux.regY = 60;
+    spriteYeux.regY = 70;
     var spriteMask = new createjs.Bitmap(imgMask);
     spriteMask.y = 45;
     var sprite = new createjs.Sprite(spSheetObj, "still");
