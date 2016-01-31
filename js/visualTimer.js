@@ -19,12 +19,12 @@ function VisualTimer(duration, x, y, type)
         var arcIncrement = deltaT*Math.PI*2 / (duration*1000);
         if(type == incrementalTimer) {
             arc = arc + arcIncrement;
-            shape.graphics.setStrokeStyle(6).beginStroke("blue").arc(x, y, radius, prevarc, arc);
+            shape.graphics.setStrokeStyle(6).beginStroke("white").arc(x, y, radius, prevarc, arc);
         }
         else{
             arc = arc - arcIncrement;
             shape.graphics.clear();
-            shape.graphics.setStrokeStyle(6).beginStroke("blue").arc(x, y, radius, -5*Math.PI/2, arc);
+            shape.graphics.setStrokeStyle(6).beginStroke("white").arc(x, y, radius, -5*Math.PI/2, arc);
         }
     }
 
