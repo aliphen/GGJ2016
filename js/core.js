@@ -178,11 +178,11 @@ function launchGame()
         }
     });
 
-    createClickable(547, 184, spSheetFlower, spSheetYeux, imgDecFlower, "flower"  );
-    createClickable(61,  90,  spSheetFrame,  spSheetYeux, imgDecFrame,  "photo"   );
-    createClickable(166, 79,  spSheetWindow, spSheetYeux, imgDecWindow, "window"  );
-    createClickable(431, 198, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium");
-    createClickable(985, 163, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   );
+    createClickable(547, 184, spSheetFlower, spSheetYeux, imgDecFlower, "flower"  , 1000);
+    createClickable(61,  90,  spSheetFrame,  spSheetYeux, imgDecFrame,  "photo"   , 1000);
+    createClickable(166, 79,  spSheetWindow, spSheetYeux, imgDecWindow, "window"  , 1000);
+    createClickable(431, 198, spSheetAqua,   spSheetYeux, imgDecAqua ,  "aquarium", 1000);
+    createClickable(985, 163, spSheetPhone,  spSheetYeux, imgDecPhone,  "phone"   , 1000);
 
     var shower = new createjs.Sprite(
         new createjs.SpriteSheet({
@@ -222,7 +222,7 @@ function launchGame()
 	createjs.Ticker.addEventListener("tick", update);
 }
 
-function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name)
+function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name, stareTimeInMs)
 {
     var spriteYeux = new createjs.Sprite(spSheetYeux, "closed"); //clone
     spriteYeux.regX = 75 / 2;
@@ -232,7 +232,7 @@ function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name)
     var sprite = new createjs.Sprite(spSheetObj, "still");
     sprite.x = x;
     sprite.y = y;
-    interactiveObjects.push(new MouseZone(sprite, spriteYeux, spriteMask, name));
+    interactiveObjects.push(new MouseZone(sprite, spriteYeux, spriteMask, name, stareTimeInMs));
 }
 
 function update(event)

@@ -111,7 +111,7 @@ function Player(img, imgWakeUp, path, callbacks) {
                         obj.state = "used"; //do not interact again
                         createjs.Sound.play(foley1);
                         this.sprite.gotoAndPlay(obj.name);
-                        this.stopFor(1000);
+                        this.stopFor(obj.stareTimeInMs);
                         break;
                     }
                 }

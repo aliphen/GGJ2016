@@ -1,6 +1,7 @@
 //sprite should have anims called still, click, active and decay
-function MouseZone(sprite, yeux, mask, name){
+function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
     this.name = name;
+    this.stareTimeInMs = stareTimeInMs;
     var clickTimeInSec = 2; //Activation
     var activeTimeInSec = 2; // 
 
