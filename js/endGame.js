@@ -7,6 +7,7 @@ function EndGame() {
 
     var countdownToBlack = 150;
     var rectangleToCoverScene;
+    var textOnTransition;
 
     createjs.Sound.play(winSound);
 
@@ -30,11 +31,19 @@ function EndGame() {
             rectangleToCoverScene.visible = true;
             rectangleToCoverScene.alpha = 0;
             stage.addChild(rectangleToCoverScene);
+            textOnTransition = new createjs.Text("I've moved on.", "20px ArchivoNarrow", "#ffffff");
+            textOnTransition.x = 200;
+            textOnTransition.y = 120;
+            textOnTransition.visible = true;
+            textOnTransition.alpha = 0;
+            stage.addChild(textOnTransition);
         }
         else
         {
-            if (rectangleToCoverScene.alpha < 1)
+            if (rectangleToCoverScene.alpha < 1) {
                 rectangleToCoverScene.alpha += 0.01;
+                textOnTransition.alpha += 0.01;
+            }
         }
 
     }
