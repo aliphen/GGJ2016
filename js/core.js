@@ -124,7 +124,7 @@ function preloadAssets()
     createjs.Sound.registerSound("media/music/Ohayo - SD - Shower.mp3", showerSound, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Typing.mp3", typingSound, 2);
 
-    createjs.Sound.registerSound("media/music/Ohayo - SD - Step.mp3", "stepSound", 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Steps.mp3", "stepSound", 2);
 
     // register music (after foley to avoid triggering the soundtrack load event
     createjs.Sound.addEventListener("fileload", playMusicLayers);
