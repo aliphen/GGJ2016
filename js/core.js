@@ -125,9 +125,6 @@ function preloadAssets()
     createjs.Sound.registerSound("media/music/Ohayo - SD - Typing.mp3", typingSound, 2);
 
     createjs.Sound.registerSound("media/music/Ohayo - SD - Step.mp3", "stepSound", 2);
-    stepSoundInstance = createjs.Sound.play("stepSound", {loop:-1});
-    stepSoundInstance.volume = 0;
-
 
     // register music (after foley to avoid triggering the soundtrack load event
     createjs.Sound.addEventListener("fileload", playMusicLayers);
@@ -294,6 +291,8 @@ function launchGame()
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingIn);
     musicHandler.fadeMusic(soundtrackLayer4, MusicStates.FadingIn);
     musicHandler.fadeMusic(soundtrackLayer5, MusicStates.FadingIn);
+    stepSoundInstance = createjs.Sound.play("stepSound", {loop:-1});
+    stepSoundInstance.volume = 0;
 
     texts = new Texts();
 

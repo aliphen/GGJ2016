@@ -173,12 +173,14 @@ function Player(img, imgWakeUp, path, callbacks) {
 
     this.stopFor = function(timeInMs, newdest, cb)
     {
-        stepSoundInstance.volume = 0;
+        if (stepSoundInstance)
+            stepSoundInstance.volume = 0;
         overridenDest = this.sprite.x;
         setTimeout(function(){
             overridenDest = newdest;
             self.sprite.gotoAndPlay("walk");
-            stepSoundInstance.volume = 1    ;
+            if (stepSoundInstance)
+                stepSoundInstance.volume = 1;
             if(cb) cb();
         }, timeInMs)
     };
