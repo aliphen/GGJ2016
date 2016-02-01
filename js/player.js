@@ -145,10 +145,19 @@ function Player(img, imgWakeUp, path, callbacks) {
             else {
                 if(callbacks[ipath]) callbacks[ipath]();
                 ipath++;
+                if (this.sprite.x == path[0]) {
+                    var showerSoundInstance = createjs.Sound.play(showerSound);
+                    showerSoundInstance.startTime = 5000;
+                }
+                if (this.sprite.x == path[1]) {
+                    var typingSoundInstance = createjs.Sound.play(typingSound);
+                    typingSoundInstance.startTime = 4000;
+                }
 
                 if (ipath == path.length && transition == null){ // end of the path : trigger transition
                     this.sprite.gotoAndPlay("still");
                     overridenDest = this.sprite.x; //prevent movement
+                    createjs.Sound.play(doorSound);
 
                     if (this.foundItemsCounter == 5) { // end of the game ! Trigger reward instead of transition
                         gameHasEnded = true;

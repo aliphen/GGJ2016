@@ -63,6 +63,9 @@ var windowSound = "windowSound";
 var phoneSound = "phoneSound";
 var photoSound = "photoSound";
 var winSound = "winSound";
+var doorSound = "doorSound";
+var showerSound = "showerSound";
+var typingSound = "typingSound";
 var stepSoundInstance;
 // Sound assets end
 
@@ -117,16 +120,14 @@ function preloadAssets()
     createjs.Sound.registerSound("media/music/Ohayo - SD - Telephone End A.mp3", phoneSound, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Blow B.mp3", photoSound, 2);
     createjs.Sound.registerSound("media/music/Ohayo - SD - Feedback Win B.mp3", winSound, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Porte.mp3", doorSound, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Shower.mp3", showerSound, 2);
+    createjs.Sound.registerSound("media/music/Ohayo - SD - Typing.mp3", typingSound, 2);
 
     createjs.Sound.registerSound("media/music/Ohayo - SD - Step.mp3", "stepSound", 2);
     stepSoundInstance = createjs.Sound.play("stepSound", {loop:-1});
     stepSoundInstance.volume = 0;
-    //createjs.Sound.registerSound("media/music/Ohayo - SD - Rain.mp3", "rainSound", 2);
-    //rainSoundInstance = createjs.Sound.play("stepSound", {loop:-1});
-    //rainSoundInstance.volume = 0;
-    //createjs.Sound.registerSound("media/music/Ohayo - SD - Sun.mp3", "sunSound", 2);
-    //sunSoundInstance = createjs.Sound.play("stepSound", {loop:-1});
-    //sunSoundInstance.volume = 0;
+
 
     // register music (after foley to avoid triggering the soundtrack load event
     createjs.Sound.addEventListener("fileload", playMusicLayers);
