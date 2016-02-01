@@ -73,7 +73,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
                 yeux.visible = false;
             }
         }
-        if(this.state == "noticed")
+        if(this.state == "noticed" || this.state == "used")
         {
             if(yeux.visible) {
                 yeux.alpha = yeux.alpha - 0.05;
