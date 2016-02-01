@@ -155,7 +155,7 @@ function Player(img, imgWakeUp, path, callbacks) {
                         texts.removeTextBox();
                     }
                     else {
-                        transition = new Transition();
+                        transition = new Transition(this);
                     }
                 }
             }

@@ -1,7 +1,7 @@
 var rectangleToCoverScene = null;
 var gameStateTransition = false;
 
-function Transition() {
+function Transition(player) {
     var transitionSpeed = 0.02;
 
     gameStateTransition = true;
@@ -12,6 +12,8 @@ function Transition() {
     rectangleToCoverScene.visible = true;
     rectangleToCoverScene.alpha = 0;
     stage.addChild(rectangleToCoverScene);
+
+
 
     // find the first applicable advice to display
     var adviceText = "";
@@ -27,6 +29,13 @@ function Transition() {
     textOnTransition.visible = true;
     textOnTransition.alpha = 0;
     stage.addChild(textOnTransition);
+
+    var remainingOnTransition = new createjs.Text(player.foundItemsCounter.toString() + " / 5", "20px ArchivoNarrow", "#ffffff");
+    remainingOnTransition.x = 1100;
+    remainingOnTransition.y = 300;
+    remainingOnTransition.visible = true;
+    remainingOnTransition.alpha = 0;
+    stage.addChild(remainingOnTransition);
 
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.FadingOut);
     musicHandler.fadeMusic(soundtrackLayer1, MusicStates.PartialFadeOut);
@@ -45,6 +54,7 @@ function Transition() {
                 if (rectangleToCoverScene.alpha < 1) {
                     rectangleToCoverScene.alpha += transitionSpeed;
                     textOnTransition.alpha += transitionSpeed;
+                    remainingOnTransition.alpha += transitionSpeed;
                 }
                 else {
                     transitionState = TransitionStates.Pause;
@@ -66,6 +76,7 @@ function Transition() {
                 if (rectangleToCoverScene.alpha > 0) {
                     rectangleToCoverScene.alpha -= transitionSpeed;
                     textOnTransition.alpha -= transitionSpeed;
+                    remainingOnTransition.alpha -= transitionSpeed;
                 }
                 else {
                     this.startGameAfterTransition();
