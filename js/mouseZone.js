@@ -79,6 +79,9 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
                 yeux.alpha = yeux.alpha - 0.05;
                 if(yeux.alpha < 0) {
                     yeux.visible = false;
+                    //reset alpha & frame for next day
+                    yeux.alpha = 1;
+                    yeux.gotoAndPlay("closed");
                 }
             }
             if(mask.alpha < 1) {
