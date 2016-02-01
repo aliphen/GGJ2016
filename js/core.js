@@ -241,7 +241,7 @@ function launchGame()
                 opened: 3,
                 closed: 0,
                 opening: [1, 2, "opened", 0.1],
-                closing: [4, 5, "closed", 0.2]
+                closing: [4, 5, "closed", 0.15]
             }
         }), "closed");
     door.x = 1050;
@@ -345,7 +345,7 @@ function update(event)
     }
 
     //open door
-    if(player.sprite.x > 1050 && !doorIsOpen)
+    if(player.sprite.x > 1000 && player.sprite.x < 1210 && !doorIsOpen)
     {
         door.gotoAndPlay("opening");
         doorIsOpen = true;
