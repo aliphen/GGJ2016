@@ -19,7 +19,8 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
     this.xEnd = x+w;
     this.xPos = x+w/2;
 
-    this.state = "frozen";
+    this.state = "inactive";
+    this.frozen = true;
 
     var timer;
     var clickedDuration = 0;
@@ -34,7 +35,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
 
     var self = this; //for callbacks and for my people
     sprite.on("mousedown", function() {
-        if(self.state == "inactive") {
+        if(self.state == "inactive" && !self.frozen) {
             timer = new VisualTimer(clickTimeInSec, x + w/2, y + h/2, incrementalTimer);
             self.state = "clicked";
             this.gotoAndPlay("click");
@@ -42,14 +43,15 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
         }
     });
 
-    sprite.on("pressup", function() {
+    this.unClick = function() {
         if(self.state == "clicked") {
             timer.remove();
             self.state = "inactive";
-            this.gotoAndPlay("still");
+            sprite.gotoAndPlay("still");
         }
         clickedDuration = 0;
-    });
+    }
+    sprite.on("pressup", this.unClick);
 
     this.update = function(event) {
         if (this.state == "clicked") {
@@ -106,7 +108,8 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
     };
 
     this.reset = function() {
-        this.state = "frozen";
+        this.state = "inactive";
+        this.frozen = true;
         mask.visible = false;
         mask.alpha = 0;
         sprite.cursor = "pointer";

@@ -316,11 +316,12 @@ function createClickable(x, y, spSheetObj, spSheetYeux, imgMask, name, stareTime
     interactiveObjects.push(new MouseZone(sprite, spriteYeux, spriteMask, name, stareTimeInMs));
 }
 
-function updateAllClickablesStatus(status)
-{
+function updateFreezation(doFreeze){
     for(var i = 0; i < interactiveObjects.length; i++) {
         var obj = interactiveObjects[i];
-        obj.state = status;
+        obj.frozen = doFreeze;
+        if(doFreeze)
+            obj.unClick();
     }
 }
 

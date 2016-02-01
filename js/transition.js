@@ -46,7 +46,7 @@ function Transition(player) {
     createjs.Sound.play(rumble);
 
     //disable all objects
-    updateAllClickablesStatus("frozen");
+    updateFreezation(true);
 
     this.update = function(event) {
         switch (transitionState) {
@@ -94,7 +94,7 @@ function Transition(player) {
 
     this.startGameAfterTransition = function() {
         //enable all objects
-        updateAllClickablesStatus("inactive");
+        updateFreezation(false);
         gameStateTransition = false;
         player.startMoving();
     };
