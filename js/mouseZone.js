@@ -2,7 +2,7 @@
 function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
     this.name = name;
     this.stareTimeInMs = stareTimeInMs;
-    var clickTimeInSec = 2; //Activation
+    var clickTimeInSec = 1.5; //Activation
     var activeTimeInSec = 2; // 
 
     //won't move
