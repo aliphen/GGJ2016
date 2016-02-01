@@ -147,11 +147,9 @@ function Player(img, imgWakeUp, path, callbacks) {
                 ipath++;
                 if (this.sprite.x == path[0]) {
                     var showerSoundInstance = createjs.Sound.play(showerSound);
-                    showerSoundInstance.startTime = 5000;
                 }
                 if (this.sprite.x == path[1]) {
                     var typingSoundInstance = createjs.Sound.play(typingSound);
-                    typingSoundInstance.startTime = 4000;
                 }
 
                 if (ipath == path.length && transition == null){ // end of the path : trigger transition
