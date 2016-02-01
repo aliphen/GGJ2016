@@ -21,7 +21,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
 
     this.state = "frozen";
 
-    this.timer;
+    var timer;
     var clickedDuration = 0;
     var activeDuration = 0;
 
@@ -35,7 +35,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
     var self = this; //for callbacks and for my people
     sprite.on("mousedown", function() {
         if(self.state == "inactive") {
-            self.timer = new VisualTimer(clickTimeInSec, x + w/2, y + h/2, incrementalTimer);
+            timer = new VisualTimer(clickTimeInSec, x + w/2, y + h/2, incrementalTimer);
             self.state = "clicked";
             this.gotoAndPlay("click");
             halo.visible = false;
@@ -44,7 +44,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
 
     sprite.on("pressup", function() {
         if(self.state == "clicked") {
-            self.timer.remove();
+            timer.remove();
             self.state = "inactive";
             this.gotoAndPlay("still");
         }
@@ -55,8 +55,8 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
         if (this.state == "clicked") {
             clickedDuration += event.delta/1000;
             if (clickedDuration > clickTimeInSec) {
-                this.timer.remove();
-                this.timer = new VisualTimer(activeTimeInSec, x + w / 2, y + h / 2, decrementalTimer);
+                timer.remove();
+                timer = new VisualTimer(activeTimeInSec, x + w / 2, y + h / 2, decrementalTimer);
                 this.state = "active";
                 sprite.gotoAndPlay("active");
                 yeux.visible = true;
@@ -67,7 +67,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
         {
             activeDuration += event.delta/1000;
             if (activeDuration > activeTimeInSec) {
-                this.timer.remove();
+                timer.remove();
                 this.state = "inactive";
                 sprite.gotoAndPlay("decay");
                 yeux.visible = false;
@@ -96,12 +96,7 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
         mask.visible = true;
         mask.alpha = 0;
         sprite.cursor = null;
-        //this.timer.remove();
-        // clear all timers
-        for (var i = 0; i < interactiveObjects.length; i++) {
-            if (interactiveObjects[i].timer)
-                interactiveObjects[i].timer.remove();
-        }
+        timer.remove();
         for (var i = 0; i < objectsToDiscover.length; i++) {
             if (objectsToDiscover[i] == name) { // discovered
                 objectsToDiscover[i] = "";
@@ -117,6 +112,6 @@ function MouseZone(sprite, yeux, mask, name, stareTimeInMs){
         sprite.cursor = "pointer";
         sprite.gotoAndPlay("still");
         yeux.visible = false;
-        if(this.timer) this.timer.remove();
+        if(timer) timer.remove();
     }
 }
