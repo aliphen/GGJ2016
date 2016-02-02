@@ -156,9 +156,12 @@ function Player(img, imgWakeUp, path, callbacks) {
                     this.sprite.gotoAndPlay("still");
                     overridenDest = this.sprite.x; //prevent movement
                     createjs.Sound.play(doorSound);
+                    if (stepSoundInstance)
+                        stepSoundInstance.volume = 0;
 
                     if (this.foundItemsCounter == 5) { // end of the game ! Trigger reward instead of transition
                         gameHasEnded = true;
+                        musicHandler.fadeMusic(soundtrackLayer4, MusicStates.FadingOut);
                         texts.removeTextBox();
                     }
                     else {
@@ -192,6 +195,8 @@ function Player(img, imgWakeUp, path, callbacks) {
         this.start = false;
         ipath = 0;
         overridenDest = undefined;
+        if (stepSoundInstance)
+            stepSoundInstance.volume = 0;
         this.sprite.x = 400;
         this.foundItemsCounter = 0;
         for(var i = 0; i < interactiveObjects.length; i ++) {
@@ -210,6 +215,8 @@ function Player(img, imgWakeUp, path, callbacks) {
     this.startMoving = function() {
         this.start = true;
         self.sprite.gotoAndPlay("walk");
+        if (stepSoundInstance)
+            stepSoundInstance.volume = 1;
     }
 
     //start stopped to show wake anim
@@ -218,5 +225,7 @@ function Player(img, imgWakeUp, path, callbacks) {
         self.sprite.visible = true;
         //allow interactions
         updateFreezation(false);
+        if (stepSoundInstance)
+            stepSoundInstance.volume = 0;
     });
 }
