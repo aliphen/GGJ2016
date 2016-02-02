@@ -178,7 +178,7 @@ function Player(img, imgWakeUp, path, callbacks) {
             overridenDest = newdest;
             self.sprite.gotoAndPlay("walk");
             if (stepSoundInstance)
-                stepSoundInstance.volume = 1;
+                stepSoundInstance.volume = 0.5;
             if(cb) cb();
         }, timeInMs)
     };
